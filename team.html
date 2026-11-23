@@ -6,7 +6,7 @@
 <title>Part 2 팀 실습 | 총무 AI LAB</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
-<body class="team-page">
+<body class="team-page" data-tool="claude">
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="index.html"><span class="tag" style="background:#115e59">총무 AI LAB</span>Part 2 · 팀 실습</a>
@@ -19,6 +19,7 @@
     </nav>
   </div>
   <nav class="toc" aria-label="목차">
+    <div class="toc-tool"><span class="lbl">내 도구</span><div class="toolsw" role="group" aria-label="도구 선택"><button type="button" data-set="claude">Claude</button><button type="button" data-set="chatgpt">ChatGPT</button></div></div>
     <div class="wrap" data-lab="t1"><a href="#t1-0">0. 팀 구성·준비</a><a href="#t1-1">1. 워밍업</a><a href="#t1-2">2. 정본 판정</a><a href="#t1-3">3. 문제 찾기</a><a href="#t1-4">4. 정리</a></div>
     <div class="wrap" data-lab="t2"><a href="#t2-1">1. 지식 카드란</a><a href="#t2-2">2. 카드 초안</a><a href="#t2-3">3. 짝 검토</a><a href="#t2-4">4. 정리</a></div>
     <div class="wrap" data-lab="t3"><a href="#t3-1">1. 규칙 합의</a><a href="#t3-2">2. 팀 에이전트</a><a href="#t3-3">3. 1라운드 채점</a><a href="#t3-4">4. 고치고 2라운드</a></div>
@@ -258,14 +259,25 @@
 
   <section class="card" id="t3-2">
     <div class="sec-h"><div class="num">2</div><h2>활동 B · 팀 에이전트 구성</h2><span class="time">5분</span></div>
-    <ol class="steps-list">
-      <li>규칙 지기 화면에서 <b>새 채팅 에이전트</b>를 만듭니다. (Part 1 Step 2 에이전트를 복제해도 됩니다)</li>
-      <li><b>지식(Knowledge)</b>: CSV 3종 + 팀의 <b>확정·충돌 미해결 카드</b> + 팀이 고친 AGENTS 파일</li>
-      <li><b>지침(Instructions)</b>: 아래 내용을 붙여 넣습니다.</li>
-      <li>이름은 <code>총무-팀에이전트-[팀이름]</code>으로 합니다.</li>
-    </ol>
-    <div class="copybox"><div class="label">팀 에이전트 지침<button type="button">복사</button></div><pre>당신은 총무팀의 팀 에이전트입니다. 지식(Knowledge)에 연결된 파일만 근거로 한국어로 답합니다.
-가장 먼저 지식에 있는 AGENTS 파일을 읽고 그 규칙을 따릅니다. 규칙과 아래 내용이 다르면 AGENTS 파일을 따릅니다.
+    <p>규칙 지기 화면에서 <b>팀 프로젝트</b>를 새로 만들고 팀원에게 공유합니다. 이름은 <code>총무-팀에이전트-[팀이름]</code>으로 합니다.</p>
+    <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
+      <ol>
+        <li><b>Projects → ＋ New Project</b>, 공개 범위는 <b>조직과 공유</b>(share with your organization)를 고릅니다.</li>
+        <li><b>Files</b>에 CSV 3종 + 팀의 <b>확정·충돌 미해결 카드</b> + 팀이 고친 AGENTS 파일을 올립니다.</li>
+        <li><b>Instructions</b>에 아래 지침을 붙여 넣습니다.</li>
+        <li>팀원들이 같은 프로젝트에서 새 대화를 열 수 있는지 확인합니다.</li>
+      </ol>
+    </div>
+    <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span>
+      <ol>
+        <li><b>New project</b>로 프로젝트를 만듭니다.</li>
+        <li>파일 추가로 CSV 3종 + 팀의 <b>확정·충돌 미해결 카드</b> + 팀이 고친 AGENTS 파일을 올립니다.</li>
+        <li><b>••• → Project settings</b> 지침 칸에 아래 지침을 붙여 넣습니다.</li>
+        <li>프로젝트 <b>공유(Share)</b>로 팀원을 초대합니다.</li>
+      </ol>
+    </div>
+    <div class="copybox"><div class="label">팀 에이전트 지침<button type="button">복사</button></div><pre>당신은 총무팀의 팀 에이전트입니다. 이 프로젝트에 올린 파일만 근거로 한국어로 답합니다.
+가장 먼저 프로젝트 파일 중 AGENTS 파일을 읽고 그 규칙을 따릅니다. 규칙과 아래 내용이 다르면 AGENTS 파일을 따릅니다.
 
 - 정본·사본·작업본·검산 대상 구분은 AGENTS 파일의 '데이터 위치'를 따른다.
 - 지식 카드는 상태가 '확정' 또는 '충돌 미해결'인 것만 근거로 쓴다. '충돌 미해결'은 양쪽을 모두 전달한다.
@@ -273,6 +285,7 @@
 - 파일에 없으면 "근거 없음", 갈라진 부서 소속은 "확정 불가".
 - 사용자가 기준일을 말하지 않으면 2026-11-23으로 본다.
 - 답변 형식: [기준일] / [한눈 요약] / [근거] / [충돌] / [빈 곳] / [위임 단계 · 다음 행동]</pre></div>
+    <div class="callout teal"><div class="t">💡 진행자 시연: AGENTS.md를 바로 읽는 Codex</div><p>Codex는 폴더에 있는 <code>AGENTS.md</code>를 스스로 읽고 따릅니다. 진행자가 팀 폴더(CSV + 확정 카드 + AGENTS.md)를 Codex로 열고, 규칙 한 줄을 고칠 때마다 답이 어떻게 바뀌는지 보여 주면 "규칙 파일이 왜 중요한지"가 바로 전달됩니다.</p></div>
   </section>
 
   <section class="card" id="t3-3">
@@ -304,13 +317,13 @@
       <tr><td><b>질문이 모호함</b></td><td>"진척률"의 기준이 둘</td><td>평가 질문 문구 수정</td></tr>
     </table>
     <ol class="steps-list">
-      <li>고친 카드·AGENTS 파일을 지식에 <b>다시 올립니다</b>. (이전 파일은 지웁니다)</li>
+      <li>고친 카드·AGENTS 파일을 프로젝트 파일에 <b>다시 올립니다</b>. (이전 파일은 지웁니다)</li>
       <li><b>틀렸던 문항만</b> 다시 묻고 2라운드 점수를 적습니다.</li>
     </ol>
     <div class="check" data-id="t3-done">
       <div class="check-h"><span>Step 3 결과물 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
       <label><input type="checkbox">팀 AGENTS 파일: 위임 단계 표와 데이터 위치를 팀 결정으로 수정</label>
-      <label><input type="checkbox">팀 에이전트 게시 (지식: CSV 3종 + 확정 카드 + 팀 AGENTS)</label>
+      <label><input type="checkbox">팀 프로젝트 공유 (파일: CSV 3종 + 확정 카드 + 팀 AGENTS)</label>
       <label><input type="checkbox">1라운드 점수와 틀린 문항별 원인 기록</label>
       <label><input type="checkbox">고친 뒤 2라운드 점수 기록</label>
       <label><input type="checkbox">시트 담당자에게 알릴 데이터 문제 목록 정리</label>
@@ -417,7 +430,8 @@
       <li><b>함정 문항을 맞히는 팀이 적어도 괜찮습니다.</b> "모른다고 말하게 만드는 것"이 오늘의 핵심이라는 걸 마지막에 짚어 주세요.</li>
       <li><b>시트를 고치려 하면 멈춰 주세요.</b> 실제 업무에서는 정본 담당자가 고칩니다. 오늘은 "알릴 목록"으로만 남깁니다.</li>
       <li><b>실제 데이터 금지.</b> 실습 중 실제 사내 데이터나 개인정보를 올리지 않도록 처음과 Step 2 시작 때 한 번 더 안내하세요.</li>
-      <li>메뉴 이름은 조직의 Gemini Enterprise 설정에 따라 다를 수 있습니다. 사전에 진행자 계정으로 한 번 따라가 보세요.</li>
+      <li>메뉴 이름은 Claude·ChatGPT 화면 업데이트나 조직 설정에 따라 다를 수 있습니다. 사전에 진행자 계정으로 두 도구 모두 한 번 따라가 보세요. 팀 안에서 도구가 섞여도 괜찮습니다. 정답은 같습니다.</li>
+      <li><b>Codex 시연 (추천):</b> 진행자 화면에서 CSV 3종 + 확정 카드 + <code>AGENTS.md</code>를 한 폴더에 두고 Codex로 열면 규칙 파일을 따로 붙여 넣지 않아도 바로 적용됩니다. AGENTS.md 한 줄(예: 집행률은 두 기준 모두)을 지웠다 되살리며 같은 질문을 던지면 규칙의 효과가 바로 보입니다.</li>
     </ul>
   </section>
 </article>

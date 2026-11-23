@@ -6,7 +6,7 @@
 <title>총무 AI LAB | 카카오 총무팀 에이전트 핸즈온</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
+<body data-tool="claude">
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="index.html"><span class="tag">총무 AI LAB</span>카카오 총무팀 에이전트 핸즈온</a>
@@ -16,6 +16,10 @@
       <a href="team.html#t1"><small>Part 2</small>팀 실습</a>
     </nav>
   </div>
+  <nav class="toc" aria-label="도구 선택">
+    <div class="toc-tool"><span class="lbl">내 도구</span><div class="toolsw" role="group" aria-label="도구 선택"><button type="button" data-set="claude">Claude</button><button type="button" data-set="chatgpt">ChatGPT</button></div></div>
+    <div class="wrap" style="display:flex"><span style="color:var(--muted);font-size:14px">오른쪽에서 내가 쓰는 도구를 고르면 모든 페이지의 안내가 그 도구 기준으로 바뀝니다.</span></div>
+  </nav>
 </header>
 
 <main class="wrap">
@@ -23,7 +27,7 @@
     <div class="pills"><span class="pill">총무팀 AI 실습 · 2026</span><span class="pill ghost">가상 데이터 3종 · 코딩 불필요</span></div>
     <h1>혼자 만들어 보고, 팀으로 키워 보는<br>총무 업무 AI 에이전트</h1>
     <p>신규입사자 장비 신청, 조직개편 좌석 재배치, 예산 정산. 설문에서 여러분이 직접 꼽은 업무를 <b>가상 데이터</b>로 실습합니다. <b>Part 1</b>에서는 각자 스킬·에이전트·워크플로우를 만들어 보고, <b>Part 2</b>에서는 팀이 함께 <b>"진짜 데이터"와 "판단 규칙"</b>을 정해 에이전트를 믿을 만하게 만듭니다.</p>
-    <div class="meta"><span>⏱ Part 1 약 70분 · Part 2 약 90분</span><span>👥 대상: 총무팀 전원 (비개발자)</span><span>🧰 도구: Gemini Enterprise (스킬·채팅 에이전트·워크플로)</span></div>
+    <div class="meta"><span>⏱ Part 1 약 70분 · Part 2 약 90분</span><span>👥 대상: 총무팀 전원 (비개발자)</span><span>🧰 도구: Claude 또는 ChatGPT (회사 계정)</span></div>
   </div>
 
   <section class="card">
@@ -32,8 +36,8 @@
     <h4>Part 1. 개인 실습 · 혼자 해보기</h4>
     <ul class="linklist">
       <li><span class="s">Step 1</span><div class="tt"><b>간편하게 스킬 만들기</b><span>장비 신청표만 올리면 입사일 기준 위험 건과 할 일 표까지 · 25분</span></div><a class="dl" href="personal.html#step1">링크 →</a></li>
-      <li><span class="s">Step 2</span><div class="tt"><b>지시만으로 노코드 에이전트 만들기</b><span>근거를 대고, 모르면 모른다고 하는 총무 데이터 컨시어지 · 20분</span></div><a class="dl" href="personal.html#step2">링크 →</a></li>
-      <li><span class="s">Step 3</span><div class="tt"><b>보다 커스텀하게! 워크플로우 에이전트 만들기</b><span>매주 월요일 아침 장비·좌석 점검 브리핑을 알아서 보내기 · 25분</span></div><a class="dl" href="personal.html#step3">링크 →</a></li>
+      <li><span class="s">Step 2</span><div class="tt"><b>지시만으로 노코드 에이전트 만들기</b><span>프로젝트로 만드는, 근거를 대고 모르면 모른다고 하는 총무 데이터 컨시어지 · 20분</span></div><a class="dl" href="personal.html#step2">링크 →</a></li>
+      <li><span class="s">Step 3</span><div class="tt"><b>보다 커스텀하게! 워크플로우 에이전트 만들기</b><span>예약 작업으로 매주 월요일 아침 장비·좌석 점검 브리핑 받기 · 25분</span></div><a class="dl" href="personal.html#step3">링크 →</a></li>
     </ul>
 
     <h4>Part 2. 팀 실습 · 함께 키우기</h4>
@@ -45,14 +49,29 @@
     </ul>
 
     <details>
-      <summary>기초부터 하고 싶다면: Gemini Enterprise 기본 튜토리얼 (외부 링크)</summary>
-      <ul class="clean">
-        <li>스킬 입문: <a href="https://ge-skill-tutorial-322108.web.app/#skill" target="_blank" rel="noopener">ge-skill-tutorial-322108.web.app</a></li>
-        <li>노코드 채팅 에이전트: <a href="https://ge-chat-tutorial-322108.web.app/" target="_blank" rel="noopener">ge-chat-tutorial-322108.web.app</a></li>
-        <li>워크플로우 에이전트: <a href="https://ge-workflow-tutorial-322108.web.app/#lab1" target="_blank" rel="noopener">ge-workflow-tutorial-322108.web.app</a></li>
-      </ul>
-      <p>이 실습은 위 튜토리얼과 같은 메뉴를 쓰고, 데이터와 과제만 총무 업무로 바꿨습니다. 메뉴를 처음 보신다면 위 튜토리얼 실습 1을 먼저 따라 해 보세요.</p>
+      <summary>도구 기초부터 보고 싶다면 (공식 도움말, 외부 링크)</summary>
+      <table>
+        <tr><th>기능</th><th>Claude</th><th>ChatGPT</th></tr>
+        <tr><td>스킬</td><td><a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" rel="noopener">Use skills in Claude</a></td><td><a href="https://developers.openai.com/codex/skills" target="_blank" rel="noopener">Agent Skills</a></td></tr>
+        <tr><td>프로젝트</td><td><a href="https://academy.claude.com/courses/claude-101/introduction-to-projects" target="_blank" rel="noopener">Introduction to projects</a></td><td><a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt" target="_blank" rel="noopener">Projects in ChatGPT</a></td></tr>
+        <tr><td>예약 작업</td><td><a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork" target="_blank" rel="noopener">Scheduled tasks in Cowork</a></td><td><a href="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex" target="_blank" rel="noopener">ChatGPT Work and Codex</a></td></tr>
+      </table>
     </details>
+  </section>
+
+  <section class="card">
+    <div class="sec-h"><div class="num">✓</div><h2>시작 전에 확인해 주세요 (5분)</h2></div>
+    <p>위쪽에서 <b>내가 쓰는 도구</b>를 고르면 아래 확인 항목과 모든 실습 안내가 그 도구 기준으로 바뀝니다. 팀 안에서 도구가 섞여도 괜찮습니다. 실습 내용과 정답은 같습니다.</p>
+    <div class="check" data-id="idx-prep">
+      <div class="check-h"><span>사전 확인</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label data-tool="claude"><input type="checkbox"><b>claude.ai</b>에 회사 계정으로 로그인</label>
+      <label data-tool="claude"><input type="checkbox">왼쪽 메뉴에서 <b>Projects</b>와 <b>Customize → Skills</b>가 보이는지 확인 (Part 1 Step 1·2)</label>
+      <label data-tool="claude"><input type="checkbox">(선택) <b>Claude 데스크톱 앱</b>에서 <b>Cowork</b>와 <b>Scheduled</b>가 보이는지 확인 (Part 1 Step 3)</label>
+      <label data-tool="chatgpt"><input type="checkbox"><b>chatgpt.com</b>에 회사 계정으로 로그인</label>
+      <label data-tool="chatgpt"><input type="checkbox">왼쪽 메뉴에서 <b>New project</b>와 <b>Plugins → Skills</b>가 보이는지 확인 (Part 1 Step 1·2)</label>
+      <label data-tool="chatgpt"><input type="checkbox">(선택) 채팅에서 <b>Work</b>를 고를 수 있는지 확인 (Part 1 Step 3 예약 작업)</label>
+    </div>
+    <p style="font-size:14px;color:var(--faint)">메뉴가 안 보이면 계정 플랜이나 조직 설정 문제일 수 있습니다. 실습 전에 진행자에게 알려 주세요.</p>
   </section>
 
   <section class="card">
@@ -90,7 +109,7 @@
   </section>
 </main>
 
-<footer><div class="wrap">총무 AI LAB · 카카오 총무팀 에이전트 핸즈온 · 실습 데이터는 모두 가상입니다.<br>메뉴 이름은 Gemini Enterprise 기준이며, 조직 설정에 따라 다르게 보일 수 있습니다.</div></footer>
+<footer><div class="wrap">총무 AI LAB · 카카오 총무팀 에이전트 핸즈온 · 실습 데이터는 모두 가상입니다.<br>위쪽에서 Claude / ChatGPT를 고르면 모든 페이지에서 그 도구 안내만 보입니다. 메뉴 이름은 화면 업데이트나 조직 설정에 따라 조금 다를 수 있습니다.</div></footer>
 <script src="assets/app.js"></script>
 </body>
 </html>
