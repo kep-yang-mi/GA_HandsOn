@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 1 개인 실습 | 총무 AI LAB</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="index.html"><span class="tag">총무 AI LAB</span>Part 1 · 개인 실습</a>
+    <nav class="labs" aria-label="실습 단계 선택">
+      <a href="#step1"><small>Step 1</small>스킬 만들기</a>
+      <a href="#step2"><small>Step 2</small>노코드 에이전트</a>
+      <a href="#step3"><small>Step 3</small>워크플로우</a>
+      <a href="team.html#t1"><small>Part 2</small>팀 실습 →</a>
+    </nav>
+  </div>
+  <nav class="toc" aria-label="목차">
+    <div class="wrap" data-lab="step1"><a href="#s1-0">0. 사전 준비</a><a href="#s1-1">1. 개요·목표</a><a href="#s1-2">2. 구축 가이드</a><a href="#s1-3">3. 테스트</a><a href="#s1-4">4. 마무리</a></div>
+    <div class="wrap" data-lab="step2"><a href="#s2-0">0. 사전 준비</a><a href="#s2-1">1. 구조·미리보기</a><a href="#s2-2">2. 구축 가이드</a><a href="#s2-3">3. 테스트</a><a href="#s2-4">4. 마무리</a></div>
+    <div class="wrap" data-lab="step3"><a href="#s3-0">0. 사전 준비</a><a href="#s3-1">1. 구조</a><a href="#s3-2">2. 구축 가이드</a><a href="#s3-3">3. 실행 검증</a><a href="#s3-4">4. 마무리·FAQ</a></div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<!-- ===================== STEP 1 ===================== -->
+<article class="lab" id="step1">
+  <div class="hero">
+    <div class="pills"><span class="pill">Part 1 · Step 1 (입문)</span><span class="pill ghost">Gemini Enterprise 스킬</span></div>
+    <h1>장비 신청표만 올리면,<br>입사일 기준 위험 건과 할 일 표까지</h1>
+    <p>미리 만들어 둔 <b>신규입사자 장비 점검 스킬</b>(<code>gs-equipment-check</code>)을 파일 업로드로 설치하고, 우리 팀 규칙 두 줄을 직접 더해 봅니다. 그다음 장비 신청표를 넣어 결과가 맞는지 체크리스트로 확인합니다.</p>
+    <div class="meta"><span>⏱ 약 25분</span><span>👥 총무팀 누구나 (코딩 불필요)</span><span>📎 스킬 파일 1개 + CSV 1개</span></div>
+  </div>
+
+  <section class="card" id="s1-0">
+    <div class="sec-h"><div class="num">0</div><h2>사전 준비</h2><span class="time">5분</span></div>
+    <div class="callout"><div class="t">💡 스킬(Skill)이 뭔가요?</div><p>매번 채팅창에 길게 쓰던 <b>업무 지시·양식·규칙을 저장해 두고 다시 쓰는 기능</b>입니다. "장비 점검해줘"라고만 해도 정해 둔 위험 기준과 표 양식대로 정리해 줍니다.</p></div>
+    <div class="check" data-id="p1-prep">
+      <div class="check-h"><span>준비 진행률</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">Gemini Enterprise 웹 앱 접속, 사내 계정 로그인</label>
+      <label><input type="checkbox">왼쪽 메뉴에 <b>스킬(Skills)</b>이 보이는지 확인</label>
+      <label><input type="checkbox">아래 파일 2개 내려받기</label>
+    </div>
+    <table>
+      <tr><th>용도</th><th>파일</th><th>내려받기</th></tr>
+      <tr><td><span class="badge blue">설치용</span></td><td><b>gs-equipment-check.md</b><br><span style="color:var(--faint);font-size:14px">입사일 기준 위험 등급·상태 집계·주변기기 수량·안내문 초안을 만드는 스킬</span></td><td><a class="dl" href="files/skills/gs-equipment-check.md" download>⬇ 스킬 파일</a></td></tr>
+      <tr><td><span class="badge">테스트용</span></td><td><b>실습1_신규입사자_장비신청.csv</b><br><span style="color:var(--faint);font-size:14px">가상 입사 예정자 15명</span></td><td><a class="dl" href="files/data/실습1_신규입사자_장비신청.csv" download>⬇ CSV</a></td></tr>
+    </table>
+    <div class="callout amber"><div class="t">스킬 메뉴가 안 보이면?</div><p>스킬 기능은 조직 관리자가 켜야 보입니다. 실습 진행자에게 알려 주세요. 기다리는 동안 스킬 파일을 열어 내용을 먼저 읽어 두면 좋습니다.</p></div>
+  </section>
+
+  <section class="card" id="s1-1">
+    <div class="sec-h"><div class="num">1</div><h2>개요 및 학습 목표</h2><span class="time">3분</span></div>
+    <h4>이런 상황, 익숙하시죠?</h4>
+    <p>입사일은 다가오는데 장비 신청표에는 "연동미완료", "재고확인중", "승인대기"가 섞여 있습니다. 누가 급한지 매번 날짜를 세고, 비고를 하나하나 읽어 담당자에게 물어봐야 합니다. 이번 실습에서는 표를 넣기만 하면 <b>급한 순서대로 막힌 이유와 다음 할 일</b>을 정리해 주는 스킬을 씁니다.</p>
+    <h4>학습 목표</h4>
+    <ul class="clean">
+      <li>스킬 파일(.md)을 <b>업로드</b>해서 바로 설치하기</li>
+      <li>스킬 지침을 열어 <b>우리 팀 규칙</b>을 직접 더하기</li>
+      <li>채팅창에서 <b>/</b> 명령으로 스킬을 불러 실행하기</li>
+      <li>결과를 <b>체크리스트로 검증</b>하기 (AI 결과를 그대로 믿지 않는 습관)</li>
+    </ul>
+    <h4>스킬 안에 들어 있는 위험 기준</h4>
+    <table>
+      <tr><th>등급</th><th>조건</th></tr>
+      <tr><td><span class="badge red">긴급</span></td><td>입사까지 14일 이내 + 지급완료가 아님 + (연동미완료 · 오류확인필요 · 재고확인중 · 승인대기 중 하나)</td></tr>
+      <tr><td><span class="badge amber">주의</span></td><td>입사까지 15~30일 + 위 조건 중 하나</td></tr>
+      <tr><td><span class="badge teal">정상</span></td><td>지급완료이거나, 지급대기 + 연동완료</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="s1-2">
+    <div class="sec-h"><div class="num">2</div><h2>단계별 구축 가이드</h2><span class="time">10분</span></div>
+    <ul class="flow"><li><b>Step 1</b>스킬 파일 업로드</li><li><b>Step 2</b>우리 팀 규칙 2줄 추가</li><li><b>Step 3</b>이름 확인 후 저장</li></ul>
+
+    <h3><span class="step">Step 1</span>파일 업로드로 스킬 설치하기</h3>
+    <ol class="steps-list">
+      <li>왼쪽 메뉴에서 <b>스킬(Skills)</b>을 클릭합니다.</li>
+      <li>오른쪽 위 <b>＋</b> → <b>스킬 업로드(Upload skill)</b>를 클릭합니다.</li>
+      <li>내려받은 <code>gs-equipment-check.md</code>를 끌어다 놓거나 파일 찾아보기로 선택한 뒤 <b>가져오기</b>를 누릅니다.</li>
+    </ol>
+    <div class="ok">스킬 목록 <b>사용 설정됨(Enabled)</b>에 <code>gs-equipment-check</code>가 보이면 성공입니다.</div>
+
+    <h3><span class="step">Step 2</span>스킬 지침에 우리 팀 규칙 2줄 더하기</h3>
+    <p>남이 만든 스킬도 우리 팀 상황에 맞게 고쳐 쓸 수 있어야 합니다. 이 실습 데이터에는 <b>재고 정보가 시트끼리 서로 다르게</b> 적혀 있어서, AI가 "재고 충분/부족"을 단정하면 틀릴 수 있습니다.</p>
+    <ol class="steps-list">
+      <li>스킬 목록에서 <code>gs-equipment-check</code>를 클릭해 편집 화면을 엽니다.</li>
+      <li>지침 맨 아래 <b>## 규칙</b> 목록 끝에 아래 두 줄을 붙여 넣습니다.</li>
+      <li>오른쪽 위 <b>저장(Save)</b>을 누릅니다.</li>
+    </ol>
+    <div class="copybox"><div class="label">규칙에 추가할 2줄<button type="button">복사</button></div><pre>- 비고에 '재고'라는 말이 있으면 재고가 충분한지 부족한지 단정하지 말고 "재고 정본 확인 필요"로 표시한다.
+- 표에서는 성명보다 신청번호를 먼저 쓰고, 안내문 초안 외에는 개인 이름을 반복하지 않는다.</pre></div>
+
+    <h3><span class="step">Step 3</span>이름 확인 후 저장하기</h3>
+    <ul class="clean">
+      <li>저장 전에 위쪽 <b>이름</b> 칸이 <code>gs-equipment-check</code>인지 확인합니다.</li>
+      <li>스킬 이름은 <b>영문 소문자와 하이픈(-)</b>만 씁니다. 한글이나 띄어쓰기가 들어가면 / 목록에서 찾기 어렵습니다.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="s1-3">
+    <div class="sec-h"><div class="num">3</div><h2>테스트 및 검증</h2><span class="time">5분</span></div>
+    <div class="callout red"><div class="t">⚠️ /스킬이름을 통째로 붙여 넣으면 스킬이 선택되지 않아요</div><p>입력창에 <b>/</b>를 직접 타이핑하고 목록에서 <code>gs-equipment-check</code>를 클릭해 스킬 칩이 들어간 것을 확인한 뒤 요청문을 붙여 넣으세요.</p></div>
+    <ol class="steps-list">
+      <li><b>새 채팅(New chat)</b>을 엽니다.</li>
+      <li>입력창에 <b>/</b> → <code>gs-equipment-check</code> 선택</li>
+      <li><b>⊕ 파일 추가</b>로 <code>실습1_신규입사자_장비신청.csv</code>를 첨부합니다.</li>
+      <li>아래 요청문을 붙여 넣고 전송합니다.</li>
+    </ol>
+    <div class="copybox"><div class="label">요청문 (스킬 선택 + 파일 첨부 후)<button type="button">복사</button></div><pre>기준일은 2026-11-23이야. 첨부한 신규입사자 장비 신청표를 점검해서 위험 건, 상태별 집계, 주변기기 수량, 확인이 필요한 질문을 정리해줘.</pre></div>
+    <div class="check" data-id="p1-test">
+      <div class="check-h"><span>Step 1 검증 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">① 첫 줄에 기준일 <b>2026-11-23</b>이 적혀 있음</label>
+      <label><input type="checkbox">② <b>긴급 1건</b>: REQ-2026-003 (12/01 입사, D-8, 연동미완료 · 재고확인중)</label>
+      <label><input type="checkbox">③ <b>주의 4건</b>: REQ-2026-007, 009, 011, 013</label>
+      <label><input type="checkbox">④ 지급상태 집계: 지급대기 7 · 지급완료 3 · 승인대기 3 · 재고확인중 2</label>
+      <label><input type="checkbox">⑤ 27인치 모니터가 총 6대(이미 지급된 REQ-001 포함)로 세어지고, REQ-009는 <b>"재고 정본 확인 필요"</b>로 표시됨 (Step 2에서 넣은 규칙)</label>
+      <label><input type="checkbox">⑥ 비고에 없는 사정을 지어내지 않음 (예: 없는 담당자 이름, 없는 입고 날짜)</label>
+    </div>
+    <details>
+      <summary>결과가 다르게 나왔다면?</summary>
+      <ul class="clean">
+        <li><b>D-n이 하루씩 다름:</b> 요청문에 기준일을 빠뜨렸는지 확인하세요. 기준일이 없으면 오늘 날짜로 계산합니다.</li>
+        <li><b>긴급이 여러 건:</b> 14일 경계(12/07 입사, D-14)의 REQ-004~006은 지급대기·연동완료라 정상입니다. "조건을 다시 확인해줘"라고 후속 요청해 보세요.</li>
+        <li><b>스킬이 안 쓰인 것 같음:</b> 답에 위험 등급 표가 없다면 스킬 칩 없이 보낸 것입니다. / 로 다시 선택하세요.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>🎯 더 해보기: 좌석·예산 스킬도 같은 방법으로</summary>
+      <table>
+        <tr><th>스킬</th><th>테스트 파일</th><th>맞는 결과</th></tr>
+        <tr><td><a class="dl" href="files/skills/gs-seat-relocation.md" download>⬇ gs-seat-relocation</a></td><td>실습2_좌석배치_현황.csv</td><td>이동 대상 10석 중 배치완료 2석 = <b>20%</b> (전체 15석 기준 7석과 구분), 조율중 3석: PA-5F-B06 · PA-7F-A01 · PA-7F-B09</td></tr>
+        <tr><td><a class="dl" href="files/skills/gs-budget-report.md" download>⬇ gs-budget-report</a></td><td>실습3_총무_예산정산.csv</td><td>집행률 <b>장부 기준 96.5%</b> · <b>지급 기준 75.8%</b>, 품의진행 4건 18,250,000원, 요약표 6줄 모두 일치</td></tr>
+      </table>
+    </details>
+  </section>
+
+  <section class="card" id="s1-4">
+    <div class="sec-h"><div class="num">✓</div><h2>마무리</h2></div>
+    <div class="grid3">
+      <div class="tile"><span class="badge blue">배운 것 1</span><h4>업로드 설치</h4><p>동료가 만든 스킬 파일 하나로 같은 업무 기준을 바로 나눠 쓸 수 있습니다.</p></div>
+      <div class="tile"><span class="badge blue">배운 것 2</span><h4>규칙 고치기</h4><p>"단정하지 말 것", "이름 대신 번호" 같은 우리 팀 규칙은 지침 한 줄로 더합니다.</p></div>
+      <div class="tile"><span class="badge blue">배운 것 3</span><h4>검증 습관</h4><p>정답을 아는 체크리스트로 확인해야 AI 결과를 믿고 쓸 수 있습니다.</p></div>
+    </div>
+    <div class="callout teal"><div class="t">다음 단계에서는</div><p>스킬은 "정해진 양식대로 정리"를 잘합니다. 그런데 장비·좌석·예산 시트를 <b>오가며 묻는 질문</b>("이 입사자 자리는 어디야?")에는 데이터와 판단 규칙이 같이 필요합니다. Step 2에서 그런 에이전트를 만듭니다.</p></div>
+    <a class="next" href="#step2">Step 2 · 노코드 에이전트 만들기 →</a>
+  </section>
+</article>
+
+<!-- ===================== STEP 2 ===================== -->
+<article class="lab" id="step2">
+  <div class="hero">
+    <div class="pills"><span class="pill">Part 1 · Step 2 (기본)</span><span class="pill ghost">No-Code · Chat Agent</span></div>
+    <h1>시트 3종과 규칙 한 장이면, 근거를 대고<br>모르면 모른다고 하는 총무 데이터 컨시어지</h1>
+    <p>"다음 주 입사자 장비 괜찮아?", "모니터 재고 충분해?", "이 입사자는 개편 후 어느 팀이야?" 장비·좌석·예산 시트를 오가는 질문에 <b>근거와 함께</b> 답하고, 시트끼리 안 맞으면 <b>둘 다</b> 보여 주고, 근거가 없으면 <b>지어내지 않는</b> 채팅 에이전트를 만듭니다.</p>
+    <div class="meta"><span>⏱ 약 20분</span><span>👥 Step 1을 마친 분</span><span>📚 핵심: 지식(Knowledge) 연결 · 지침 · 환각 방지</span></div>
+  </div>
+
+  <section class="card" id="s2-0">
+    <div class="sec-h"><div class="num">0</div><h2>사전 준비 및 파일 내려받기</h2><span class="time">3분</span></div>
+    <div class="callout teal"><div class="t">💬 채팅 에이전트는 스킬과 뭐가 다른가요?</div><p>스킬은 "이 양식대로 정리해"에 강하고, 채팅 에이전트는 <b>연결된 자료(지식)를 찾아 가며 질문에 답하는 전담 비서</b>입니다. 이번에는 에이전트에게 데이터뿐 아니라 <b>"어떤 데이터를 믿고, 모르면 어떻게 말할지"</b>까지 알려 줍니다.</p></div>
+    <div class="check" data-id="p2-prep">
+      <div class="check-h"><span>준비 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">왼쪽 메뉴 <b>에이전트(Agents)</b> → <b>＋ 새 에이전트</b> → <b>채팅 에이전트(Chat agent)</b>가 보이는지 확인</label>
+      <label><input type="checkbox">CSV 3개 내려받기 (Step 1에서 받은 장비 CSV 포함)</label>
+      <label><input type="checkbox">규칙 문서 1개 + 지식 카드 3장 내려받기</label>
+    </div>
+    <table>
+      <tr><th>구분</th><th>파일</th><th>설명</th><th>내려받기</th></tr>
+      <tr><td><span class="badge">데이터</span></td><td>실습1 · 2 · 3 CSV</td><td>장비 15건, 좌석 15석, 예산 15건</td><td><a class="dl" href="files/data/실습1_신규입사자_장비신청.csv" download>⬇ 장비</a> <a class="dl" href="files/data/실습2_좌석배치_현황.csv" download>⬇ 좌석</a> <a class="dl" href="files/data/실습3_총무_예산정산.csv" download>⬇ 예산</a></td></tr>
+      <tr><td><span class="badge blue">규칙</span></td><td>AGENTS_총무팀.md</td><td>어떤 데이터가 진짜인지, 무엇을 하면 안 되는지, 답변 형식</td><td><a class="dl" href="files/AGENTS_총무팀.md" download>⬇ 규칙</a></td></tr>
+      <tr><td><span class="badge teal">지식 카드</span></td><td>카드 3장</td><td>시트에 안 적힌 맥락: 개편 전후 부서명, 모니터 재고 충돌, 웰컴키트 의존성</td><td><a class="dl" href="files/cards/조직개편_부서명_매핑.md" download>⬇ 부서명</a> <a class="dl" href="files/cards/모니터재고_장비지급.md" download>⬇ 재고</a> <a class="dl" href="files/cards/웰컴키트_품의_입사자지급.md" download>⬇ 웰컴키트</a></td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="s2-1">
+    <div class="sec-h"><div class="num">1</div><h2>완성할 에이전트 구조 & 좋은 답 / 나쁜 답 미리 보기</h2><span class="time">4분</span></div>
+    <ul class="flow">
+      <li><b>① 질문</b>"REQ-2026-001 입사자는 개편 후 어느 팀이야?"</li>
+      <li><b>② 지침</b>AGENTS 규칙 요약: 근거 필수, 충돌은 둘 다, 없으면 "근거 없음"</li>
+      <li><b>③ 지식</b>CSV 3종 + 지식 카드 3장</li>
+      <li><b>④ 답</b>[기준일] [요약] [근거] [충돌] [빈 곳] [다음 행동]</li>
+    </ul>
+    <h4>같은 질문, 두 가지 답</h4>
+    <div class="grid2">
+      <div class="answer bad"><b>❌ 데이터만 준 에이전트</b>"REQ-2026-001 김○○ 님은 클라우드플랫폼팀 소속으로, 조직개편 후 <u>AI인프라팀</u>으로 이동합니다."<br><span style="font-size:13px;color:var(--red)">→ 좌석표에서 같은 팀 한 명이 AI인프라팀으로 간 것을 보고 추측</span></div>
+      <div class="answer good"><b>✅ 규칙 + 지식 카드를 준 에이전트</b>[결론] 개편 후 소속은 <b>확정 불가</b>입니다.<br>[근거] 좌석표상 클라우드플랫폼팀은 유지(PA-5F-A01)와 AI인프라팀 이동(PA-5F-A02)으로 갈립니다. (지식 카드: 조직개편_부서명_매핑)<br>[다음 행동] 인사팀 조직개편 발표문으로 확인</div>
+    </div>
+  </section>
+
+  <section class="card" id="s2-2">
+    <div class="sec-h"><div class="num">2</div><h2>단계별 구축 가이드</h2><span class="time">10분</span></div>
+
+    <h3><span class="step">Step 1</span>채팅 에이전트 빌더 열기</h3>
+    <ol class="steps-list"><li>왼쪽 메뉴 <b>에이전트(Agents)</b> → <b>＋ 새 에이전트</b> → <b>채팅 에이전트(Chat agent)</b>를 선택합니다.</li></ol>
+
+    <h3><span class="step">Step 2</span>파일 첨부 + 한 문단으로 초안 만들기</h3>
+    <ol class="steps-list">
+      <li>입력창 아래 <b>⊕ 파일 추가</b>로 <b>CSV 3개 + AGENTS_총무팀.md + 카드 3장</b>, 모두 7개를 첨부합니다.</li>
+      <li>아래 프롬프트를 붙여 넣고 전송합니다.</li>
+    </ol>
+    <div class="copybox"><div class="label">초안 생성 프롬프트<button type="button">복사</button></div><pre>첨부한 총무 데이터 3종(신규입사자 장비신청, 좌석배치 현황, 예산정산), 지식 카드 3장, 규칙 문서(AGENTS_총무팀.md)를 근거로 총무팀 동료의 질문에 답하는 '총무 데이터 컨시어지' 채팅 에이전트를 만들어줘.
+- 모든 답의 첫 줄에 기준일을 적고, 사용자가 기준일을 말하지 않으면 2026-11-23으로 본다.
+- 숫자에는 어느 파일 어느 행을 근거로 했는지 붙인다.
+- 파일끼리 내용이 다르면 하나를 고르지 말고 둘 다 보여준다.
+- 파일에 없는 내용은 지어내지 말고 '근거 없음'이라고 답한 뒤 누구에게 확인할지 안내한다.
+- 결재, 발주, 메시지 발송은 하지 않고 초안까지만 쓴다.</pre></div>
+
+    <h3><span class="step">Step 3</span>흐름(Flow) 탭에서 지침 다듬기</h3>
+    <p>자동으로 만든 초안의 지침은 사람마다 조금씩 다릅니다. 모두 같은 결과를 보도록 메인 노드 지침을 아래 내용으로 바꿉니다.</p>
+    <ol class="steps-list"><li>오른쪽 <b>흐름(Flow)</b> 탭 → 가운데 <b>메인 에이전트 노드</b> 클릭</li><li><b>지침(Instructions)</b> 칸을 비우고 아래 내용을 붙여 넣습니다.</li></ol>
+    <div class="copybox"><div class="label">메인 노드 지침<button type="button">복사</button></div><pre>당신은 카카오 총무팀의 '총무 데이터 컨시어지'입니다. 지식(Knowledge)에 연결된 파일만 근거로 한국어로 답합니다.
+
+[데이터의 성격]
+- 장비 신청표: 장비 신청·지급상태의 정본. 인사시스템 연동여부는 인사시스템의 사본이므로 "시트 기준"이라고 밝힌다.
+- 좌석 현황표: 좌석 배치의 정본. 신규 입사자 좌석은 들어 있지 않다.
+- 예산 정산표: 전자결재의 작업본. 오른쪽 요약표는 검산 대상이지 근거가 아니다.
+- 지식 카드: 시트에 없는 맥락. 신뢰도 '낮음' 카드는 단독 근거로 쓰지 않는다.
+
+[답변 원칙]
+1. 첫 줄에 [기준일]. 사용자가 말하지 않으면 2026-11-23.
+2. 숫자마다 근거(파일, 행, 계산식)를 붙인다.
+3. 충돌은 고르지 않는다. '충돌 미해결' 카드의 내용은 양쪽을 모두 전달한다.
+4. 기준이 두 개면 둘 다 보여준다. 예: 집행률은 장부 기준(집행금액 전체)과 지급 기준(지급완료만).
+5. 파일에 없으면 "근거 없음". 조직개편으로 둘로 갈라진 부서의 입사자 소속은 "확정 불가".
+6. 결재·발주·발송은 하지 않는다. 안내문과 공지는 초안으로만 쓰고, 다른 직원 이름 대신 부서 단위로 쓴다.
+
+[답변 형식]
+[기준일] / [한눈 요약] 3줄 / [근거] / [충돌] 없으면 "없음" / [빈 곳] 없으면 "없음" / [사람이 할 다음 행동]</pre></div>
+
+    <h3><span class="step">Step 4</span>지식(Knowledge) 연결 확인</h3>
+    <p>메인 노드의 <b>지식(Knowledge)</b> 칸에 파일 7개가 모두 붙어 있는지 확인합니다. 빠진 파일이 있으면 <b>⊕ 파일 추가</b>로 다시 올립니다.</p>
+    <div class="callout amber"><div class="t">파일이 많아지면?</div><p>실습에서는 파일을 직접 올리지만, 실제 업무에서는 Google Drive 폴더를 연결해 <b>원본이 바뀌면 에이전트도 최신 내용을 보도록</b> 하는 게 좋습니다. 어느 파일이 "진짜"인지 정하는 일은 Part 2에서 팀으로 합니다.</p></div>
+
+    <h3><span class="step">Step 5</span>시작 프롬프트 3개 등록</h3>
+    <p><b>개인화(Personalization)</b> → 시작 프롬프트(Starter prompts)에 아래 3개를 하나씩 넣습니다.</p>
+    <div class="copybox"><div class="label">시작 프롬프트 ①<button type="button">복사</button></div><pre>다음 주 입사자 중 장비 준비가 막힌 건 알려줘</pre></div>
+    <div class="copybox"><div class="label">시작 프롬프트 ②<button type="button">복사</button></div><pre>조직개편 좌석 재배치 진척률이랑 막힌 좌석 정리해줘</pre></div>
+    <div class="copybox"><div class="label">시작 프롬프트 ③<button type="button">복사</button></div><pre>10~11월 총무 예산 집행률 알려줘</pre></div>
+  </section>
+
+  <section class="card" id="s2-3">
+    <div class="sec-h"><div class="num">3</div><h2>미리보기(Preview) 4종 테스트 & 게시</h2><span class="time">5분</span></div>
+    <p>오른쪽 위 <b>미리보기(Preview)</b> 탭에서 아래 질문을 순서대로 던집니다. ②와 ③은 <b>"모른다"고 답해야 정답</b>인 함정 문제입니다.</p>
+    <h3>테스트 ① 시트끼리 안 맞을 때</h3>
+    <div class="copybox"><div class="label">질문 ①<button type="button">복사</button></div><pre>아직 지급 안 된 27인치 모니터는 몇 대야? 재고는 충분해?</pre></div>
+    <p><b>확인 포인트:</b> 미지급 <b>5대</b>(REQ-007 2대, 009·010·015 각 1대). 재고는 10월 정산 비고 "예비 재고 10세트"와 REQ-009 비고 "재고 부족으로 발주 요청"이 <b>충돌</b>한다고 둘 다 보여 줘야 합니다.</p>
+    <h3>테스트 ② 부서가 갈라졌을 때 (함정)</h3>
+    <div class="copybox"><div class="label">질문 ②<button type="button">복사</button></div><pre>REQ-2026-001 입사자는 조직개편 후 어느 팀 소속이야?</pre></div>
+    <p><b>확인 포인트:</b> <b>"확정 불가"</b>. 클라우드플랫폼팀이 유지와 AI인프라팀 이동으로 갈렸기 때문입니다.</p>
+    <h3>테스트 ③ 데이터에 없는 질문 (함정)</h3>
+    <div class="copybox"><div class="label">질문 ③<button type="button">복사</button></div><pre>12월 사옥관리비는 얼마 나올 것 같아?</pre></div>
+    <p><b>확인 포인트:</b> <b>"근거 없음"</b>(정산표는 10~11월만 있음). 10·11월 실적을 참고로 보여 주는 건 괜찮지만, 12월 금액을 추정해 내놓으면 실패입니다.</p>
+    <h3>테스트 ④ 기준이 두 개일 때</h3>
+    <div class="copybox"><div class="label">질문 ④<button type="button">복사</button></div><pre>10~11월 총무 예산 집행률 알려줘</pre></div>
+    <p><b>확인 포인트:</b> 장부 기준 <b>96.5%</b>(166,970,000 ÷ 173,000,000)와 지급 기준 <b>75.8%</b>(131,070,000 ÷ 173,000,000)를 둘 다 보여 줘야 합니다.</p>
+    <div class="check" data-id="p2-test">
+      <div class="check-h"><span>Step 2 검증 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">① 모니터 5대 + 재고 <b>충돌을 둘 다</b> 보여 줌</label>
+      <label><input type="checkbox">② REQ-2026-001 소속을 <b>"확정 불가"</b>로 답함</label>
+      <label><input type="checkbox">③ 12월 사옥관리비를 <b>추정하지 않음</b></label>
+      <label><input type="checkbox">④ 집행률 <b>96.5% / 75.8%</b> 두 기준을 모두 보여 줌</label>
+      <label><input type="checkbox">⑤ <b>만들기(Create)</b>로 게시하고 내 에이전트 목록에서 실행됨</label>
+    </div>
+    <details><summary>함정 문제를 틀렸다면?</summary>
+      <ul class="clean">
+        <li>지침(Step 3)이 초안 지침으로 남아 있지 않은지 확인하세요. 원칙 5번이 핵심입니다.</li>
+        <li>지식 카드 <code>조직개편_부서명_매핑.md</code>가 지식 칸에 붙어 있는지 확인하세요.</li>
+        <li>그래도 틀리면 그대로 두세요. <b>Part 2에서 팀이 원인을 찾고 고치는 재료</b>가 됩니다.</li>
+      </ul>
+    </details>
+  </section>
+
+  <section class="card" id="s2-4">
+    <div class="sec-h"><div class="num">✓</div><h2>마무리</h2></div>
+    <div class="grid3">
+      <div class="tile"><span class="badge teal">핵심 1</span><h4>데이터 + 규칙</h4><p>데이터만 주면 그럴듯하게 추측합니다. "무엇을 믿고, 모르면 어떻게 말할지"를 같이 줘야 합니다.</p></div>
+      <div class="tile"><span class="badge teal">핵심 2</span><h4>지식 카드</h4><p>부서명 변경, 재고 충돌처럼 시트에 안 적힌 맥락은 카드로 따로 알려 줍니다.</p></div>
+      <div class="tile"><span class="badge teal">핵심 3</span><h4>함정 문제</h4><p>"모른다"고 답해야 하는 질문으로 시험해야 믿을 수 있는지 압니다.</p></div>
+    </div>
+    <a class="next" href="#step3">Step 3 · 워크플로우 에이전트 만들기 →</a>
+  </section>
+</article>
+
+<!-- ===================== STEP 3 ===================== -->
+<article class="lab" id="step3">
+  <div class="hero">
+    <div class="pills"><span class="pill">Part 1 · Step 3 (심화 · 선택)</span><span class="pill ghost">Workflow Builder</span></div>
+    <h1>매주 월요일 아침, 장비 위험 건과 막힌 좌석을<br>알아서 정리해 보내 주는 워크플로우</h1>
+    <p>Step 1·2는 내가 물어봐야 답합니다. Step 3에서는 <b>정해진 시간에 스스로 시트를 읽고 → 점검하고 → 나에게 메일로 보내는</b> 자동화를 만듭니다. 먼저 수동 실행으로 시험한 뒤, 매주 예약 실행으로 바꿉니다.</p>
+    <div class="meta"><span>⏱ 약 25분</span><span>👥 Step 2를 마친 분</span><span>🔌 연동: Google Drive · Gmail</span></div>
+  </div>
+
+  <section class="card" id="s3-0">
+    <div class="sec-h"><div class="num">0</div><h2>사전 준비: 실습 시트를 내 Drive에 올리기</h2><span class="time">5분</span></div>
+    <div class="callout"><div class="t">⚡ 채팅 에이전트와 워크플로우는 뭐가 다른가요?</div><p>채팅 에이전트가 "물어보면 답하는 비서"라면, 워크플로우는 <b>트리거(수동 / 정해진 시간) → 자료 수집 → 작성 → 발송</b>을 정해진 순서대로 스스로 끝내는 <b>업무 자동화</b>입니다.</p></div>
+    <div class="check" data-id="p3-prep">
+      <div class="check-h"><span>준비 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">에이전트 → ＋ 새 에이전트 → <b>워크플로(Workflow)</b> 메뉴가 열리는지 확인</label>
+      <label><input type="checkbox">장비·좌석 CSV를 내 Google Drive에 올리고, 각각 열어 <b>파일 → Google Sheets로 저장</b></label>
+      <label><input type="checkbox">시트 이름을 <code>[실습] 신규입사자 장비신청</code>, <code>[실습] 좌석배치 현황</code>으로 변경</label>
+    </div>
+    <div class="callout red"><div class="t">🔒 안전 수칙</div><p>실습 중 메일은 <b>나에게만</b> 보냅니다. 팀 공유는 Part 2에서 규칙을 합의한 다음에 합니다.</p></div>
+  </section>
+
+  <section class="card" id="s3-1">
+    <div class="sec-h"><div class="num">1</div><h2>완성할 워크플로우 구조</h2><span class="time">3분</span></div>
+    <ul class="flow">
+      <li><b>① 트리거</b>테스트: 수동 실행 (입력: 기준일)<br>완성: 매주 월 08:30</li>
+      <li><b>② 자료 수집</b>Drive의 장비·좌석 시트 2개 읽기</li>
+      <li><b>③ 브리핑 작성</b>장비 위험 등급 + 좌석 진척·막힌 곳 + 확인 질문</li>
+      <li><b>④ 발송</b>Gmail로 나에게만</li>
+    </ul>
+  </section>
+
+  <section class="card" id="s3-2">
+    <div class="sec-h"><div class="num">2</div><h2>단계별 구축 가이드 (Workflow Builder)</h2><span class="time">12분</span></div>
+
+    <h3><span class="step">Step 1</span>Workflow Builder 열기</h3>
+    <ol class="steps-list"><li>에이전트(Agents) → ＋ 새 에이전트 → <b>워크플로(Workflow)</b>를 선택합니다.</li></ol>
+
+    <h3><span class="step">Step 2</span>커넥터 켜고, 프롬프트로 4단계 뼈대 만들기</h3>
+    <ol class="steps-list"><li><b>Google Drive</b>와 <b>Gmail</b> 커넥터가 연결되어 있는지 확인합니다. (처음이면 권한 허용 창이 뜹니다)</li><li>아래 프롬프트를 붙여 넣어 뼈대를 만듭니다.</li></ol>
+    <div class="copybox"><div class="label">뼈대 생성 프롬프트<button type="button">복사</button></div><pre>'총무 주간 점검 브리핑' 워크플로우를 만들어줘.
+1단계 트리거: 테스트용 수동 실행. 입력 필드는 '기준일' 하나 (기본값 2026-11-23).
+2단계 자료 수집: Google Drive에서 '[실습] 신규입사자 장비신청'과 '[실습] 좌석배치 현황' 시트를 읽는다.
+3단계 브리핑 작성: 장비 위험 건, 좌석 재배치 진척과 막힌 좌석, 확인이 필요한 질문을 정리한다.
+4단계 발송: 작성한 브리핑을 Gmail로 나에게만 보낸다. 제목은 '[총무 주간 점검] 기준일 YYYY-MM-DD'.</pre></div>
+
+    <h3><span class="step">Step 3</span>① 트리거 입력 필드 점검</h3>
+    <p>수동 트리거에 <b>기준일</b> 입력 필드가 있고 기본값이 <code>2026-11-23</code>인지 확인합니다. 테스트 결과를 체크리스트와 맞추려면 날짜를 고정해야 합니다.</p>
+
+    <h3><span class="step">Step 4</span>② 자료 수집 단계 점검</h3>
+    <p>수집 단계가 두 시트를 <b>모두</b> 읽도록 되어 있는지 확인합니다. 하나만 잡혀 있으면 파일 선택에서 나머지 시트를 추가합니다.</p>
+
+    <h3><span class="step">Step 5</span>③ 브리핑 작성 단계 지침 넣기</h3>
+    <p>작성 단계를 클릭하고 지침을 아래 내용으로 바꿉니다. Step 1 스킬의 위험 기준과 Step 2 에이전트의 원칙을 합친 것입니다.</p>
+    <div class="copybox"><div class="label">작성 단계 지침<button type="button">복사</button></div><pre>입력받은 기준일로 두 시트를 점검해 총무팀 주간 브리핑을 작성한다.
+
+[장비]
+- 긴급: 입사까지 14일 이내 + 지급완료 아님 + (연동미완료·오류확인필요·재고확인중·승인대기 중 하나)
+- 주의: 입사까지 15~30일 + 위 조건 중 하나
+- 건마다 "신청번호 | 입사일(D-n) | 막힌 이유 | 다음 할 일" 한 줄. 막힌 이유는 비고에 적힌 내용만 쓴다.
+- 비고에 '재고'가 있으면 "재고 정본 확인 필요"로 표시한다.
+
+[좌석]
+- 이동 대상 중 배치완료 비율 (전체 좌석 기준과 구분해서)
+- 조율중 좌석마다 "좌석코드 | 정해야 할 것"
+
+[형식]
+첫 줄: 기준일 / 한눈 요약 3줄 / 장비 표 / 좌석 표 / 확인이 필요한 질문
+개인 이름 대신 신청번호와 좌석코드를 쓴다. 시트에 없는 내용은 만들지 않는다.</pre></div>
+
+    <h3><span class="step">Step 6</span>④ 발송 단계: 받는 사람 확인</h3>
+    <p>Gmail 발송 단계의 <b>받는 사람이 나 혼자</b>인지 꼭 확인합니다. 팀 메일 주소나 다른 사람이 들어가 있으면 지웁니다.</p>
+  </section>
+
+  <section class="card" id="s3-3">
+    <div class="sec-h"><div class="num">3</div><h2>시뮬레이션 · 켜기 · 예약</h2><span class="time">5분</span></div>
+    <h3>① 미리보기 / 테스트 실행</h3>
+    <p>미리보기(테스트) 탭에서 기준일 <code>2026-11-23</code>으로 실행하고, 받은 메일을 아래 체크리스트로 확인합니다.</p>
+    <div class="check" data-id="p3-test">
+      <div class="check-h"><span>Step 3 검증 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">① 메일 1통이 <b>나에게만</b> 왔고 제목에 기준일이 있음</label>
+      <label><input type="checkbox">② 장비 긴급: <b>REQ-2026-003</b> 1건 / 주의: <b>007 · 009 · 011 · 013</b> 4건</label>
+      <label><input type="checkbox">③ 좌석: 이동 대상 10석 중 배치완료 2석 (<b>20%</b>), 조율중 <b>PA-5F-B06 · PA-7F-A01 · PA-7F-B09</b></label>
+      <label><input type="checkbox">④ 개인 이름 대신 신청번호·좌석코드로 쓰여 있음</label>
+      <label><input type="checkbox">⑤ 마지막에 "확인이 필요한 질문"이 있음</label>
+    </div>
+    <h3>② 켜기 후 매주 예약으로 바꾸기</h3>
+    <ol class="steps-list">
+      <li>결과가 맞으면 <b>켜기(Turn on)</b>를 누릅니다.</li>
+      <li>트리거를 <b>일정(Schedule)</b>으로 바꾸고 <b>매주 월요일 08:30</b>으로 설정합니다.</li>
+      <li>예약 실행에서는 기준일을 <b>실행한 날짜</b>로 쓰도록 바꿉니다. (실제 데이터를 연결했을 때)</li>
+    </ol>
+    <details><summary>🎯 심화 도전: 긴급 건이 있을 때만 사람 승인을 받고 보내기</summary>
+      <p>작성 단계 다음에 <b>조건(Condition)</b>을 넣어 "긴급 건이 1건 이상"이면 <b>승인(Approval)</b> 단계를 거쳐 팀 채널로, 아니면 나에게만 보내도록 바꿔 보세요. 사람 승인을 넣는 이유는 Part 2 Step 3의 "위임 단계"에서 다룹니다.</p>
+    </details>
+  </section>
+
+  <section class="card" id="s3-4">
+    <div class="sec-h"><div class="num">✓</div><h2>마무리 & 자주 막히는 질문</h2></div>
+    <details><summary>Q. Gemini Enterprise가 아닌 다른 AI 도구로도 할 수 있나요?</summary>
+      <table>
+        <tr><th>이 실습</th><th>Claude</th><th>ChatGPT</th></tr>
+        <tr><td>Step 1 스킬</td><td>Skills (스킬 파일 업로드)</td><td>프로젝트 지침 또는 GPT 지침에 스킬 내용 붙여 넣기</td></tr>
+        <tr><td>Step 2 채팅 에이전트</td><td>Projects (지식 파일 + 지침)</td><td>GPTs (지식 파일 + 지침)</td></tr>
+        <tr><td>Step 3 워크플로우</td><td colspan="2">도구의 예약 실행 기능, 또는 사내 Boost One 자동 규칙(매일·평일·매주 예약) 활용 <span class="badge">조직 설정 확인 필요</span></td></tr>
+      </table>
+      <p>메뉴 이름만 다르고, <b>스킬 = 저장된 양식·규칙</b>, <b>에이전트 = 지식 + 지침</b>, <b>워크플로우 = 트리거 + 순서</b>라는 구조는 같습니다.</p>
+    </details>
+    <details><summary>Q. 워크플로우가 시트를 못 찾아요</summary><p>CSV 그대로가 아니라 <b>Google Sheets로 저장한 파일</b>인지, 이름이 프롬프트와 똑같은지 확인하세요. 수집 단계에서 파일을 직접 골라도 됩니다.</p></details>
+    <details><summary>Q. 매번 결과가 조금씩 달라요</summary><p>날짜를 고정했는지, 지침에 위험 기준과 형식이 적혀 있는지 확인하세요. 기준과 형식이 구체적일수록 결과가 안정됩니다. 그래도 남는 차이는 Part 2에서 <b>평가 질문</b>으로 관리합니다.</p></details>
+    <div class="callout teal"><div class="t">Part 1 정리</div><p>스킬로 <b>양식</b>을, 에이전트로 <b>지식과 판단 규칙</b>을, 워크플로우로 <b>자동 실행</b>을 경험했습니다. 그런데 팀원마다 만든 에이전트가 같은 질문에 다르게 답한다면 어떨까요? 그 이유를 찾고 팀의 기준을 정하는 것이 Part 2입니다.</p></div>
+    <a class="next" href="team.html#t1">Part 2 · 팀 실습 시작하기 →</a>
+  </section>
+</article>
+
+</main>
+<footer><div class="wrap">총무 AI LAB · Part 1 개인 실습 · 실습 데이터는 모두 가상입니다. 체크 표시는 이 브라우저에만 저장됩니다.</div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
