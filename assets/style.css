@@ -89,7 +89,7 @@ details[open] summary{margin-bottom:8px}
 .answer{border-radius:14px;padding:14px 16px;font-size:14.5px}
 .answer.good{background:var(--teal-soft);border:1px solid var(--teal-line)}
 .answer.bad{background:var(--red-soft);border:1px solid var(--red-line)}
-.answer b{display:block;margin-bottom:4px}
+.answer > b:first-child{display:block;margin-bottom:4px}
 .next{display:block;text-decoration:none;text-align:center;font-weight:800;color:#fff;background:var(--navy);border-radius:14px;padding:16px;margin-top:18px}
 .next:hover{background:#1e293b}
 .lab{display:none}.lab.on{display:block}
@@ -126,3 +126,17 @@ body[data-tool="chatgpt"] [data-tool="claude"]{display:none!important}
 .toc-tool .toolsw{padding:3px}
 .toc-tool .toolsw button{padding:4px 12px;font-size:13px}
 @media (max-width:820px){.toc-tool{position:static;transform:none;padding:8px 20px 0;background:transparent}}
+
+.check label .lt{flex:1;min-width:0}
+/* table polish: keep badges on one line, give download buttons room */
+.badge{white-space:nowrap}
+td .dl{display:inline-block;margin:3px 6px 3px 0}
+td:first-child .badge{min-width:max-content}
+td{word-break:keep-all}
+td:has(.dl){white-space:nowrap;width:1%}
+@media (max-width:820px){td:has(.dl){white-space:normal;width:auto}}
+
+.ckhint{font-size:13.5px;color:var(--muted);margin:0 0 4px}
+/* team hero: second pill (teal background) -> gray text for readability */
+.hero.team .pill.ghost{color:#334155;border:0}
+td.vote{color:var(--faint);white-space:nowrap;letter-spacing:.02em}

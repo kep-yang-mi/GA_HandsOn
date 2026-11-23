@@ -49,7 +49,7 @@
     </div>
     <table>
       <tr><th>용도</th><th>파일</th><th>내려받기</th></tr>
-      <tr><td><span class="badge blue">설치용</span></td><td><b>gs-equipment-check.zip</b><br><span style="color:var(--faint);font-size:14px">입사일 기준 위험 등급·상태 집계·주변기기 수량·안내문 초안을 만드는 스킬 (내용만 보려면 <a href="files/skills/gs-equipment-check.md" target="_blank">.md 보기</a>)</span></td><td><a class="dl" href="files/skills/gs-equipment-check.zip" download>⬇ 스킬 zip</a></td></tr>
+      <tr><td><span class="badge blue">설치용</span></td><td><b>gs-equipment-check.zip</b><br><span style="color:var(--faint);font-size:14px">입사일 기준 위험 등급·상태 집계·주변기기 수량·안내문 초안을 만드는 스킬 (내용만 보려면 <a href="view.html?f=files/skills/gs-equipment-check.md&amp;back=personal.html%23s1-0">내용 보기</a>)</span></td><td><a class="dl" href="files/skills/gs-equipment-check.zip" download>⬇ 스킬 zip</a></td></tr>
       <tr><td><span class="badge">테스트용</span></td><td><b>실습1_신규입사자_장비신청.csv</b><br><span style="color:var(--faint);font-size:14px">가상 입사 예정자 15명</span></td><td><a class="dl" href="files/data/실습1_신규입사자_장비신청.csv" download>⬇ CSV</a></td></tr>
     </table>
     <div class="callout amber"><div class="t">스킬 메뉴가 안 보이면?</div><p>스킬 기능은 조직 설정에 따라 꺼져 있을 수 있습니다. 실습 진행자에게 알려 주세요. 기다리는 동안 Step 2(규칙 추가)를 먼저 해 두면 됩니다.</p></div>
@@ -67,12 +67,22 @@
       <li>결과를 <b>체크리스트로 검증</b>하기 (AI 결과를 그대로 믿지 않는 습관)</li>
     </ul>
     <h4>스킬 안에 들어 있는 위험 기준</h4>
+    <p>먼저 각 입사자에게 아래 <b>"막힘 신호" 4가지</b> 중 해당하는 게 있는지 봅니다.</p>
     <table>
-      <tr><th>등급</th><th>조건</th></tr>
-      <tr><td><span class="badge red">긴급</span></td><td>입사까지 14일 이내 + 지급완료가 아님 + (연동미완료 · 오류확인필요 · 재고확인중 · 승인대기 중 하나)</td></tr>
-      <tr><td><span class="badge amber">주의</span></td><td>입사까지 15~30일 + 위 조건 중 하나</td></tr>
-      <tr><td><span class="badge teal">정상</span></td><td>지급완료이거나, 지급대기 + 연동완료</td></tr>
+      <tr><th>막힘 신호</th><th>확인할 열</th><th>값</th></tr>
+      <tr><td>① 인사 연동이 안 됨</td><td>인사시스템 연동여부</td><td><code>연동미완료</code></td></tr>
+      <tr><td>② 인사 연동 오류</td><td>인사시스템 연동여부</td><td><code>오류확인필요</code></td></tr>
+      <tr><td>③ 재고 확인 중</td><td>지급상태</td><td><code>재고확인중</code></td></tr>
+      <tr><td>④ 승인 대기 중</td><td>지급상태</td><td><code>승인대기</code></td></tr>
     </table>
+    <p>그다음 <b>입사까지 남은 날짜</b>로 등급을 나눕니다.</p>
+    <table>
+      <tr><th>등급</th><th>조건</th><th>예 (기준일 2026-11-23)</th></tr>
+      <tr><td><span class="badge red">긴급</span></td><td>입사까지 <b>14일 이내</b> + 지급상태가 <code>지급완료</code>가 아님 + 막힘 신호 ①~④ 중 <b>1개 이상</b></td><td>REQ-2026-003: 12/01 입사(D-8), 연동미완료 + 재고확인중</td></tr>
+      <tr><td><span class="badge amber">주의</span></td><td>입사까지 <b>15~30일</b> + 지급상태가 <code>지급완료</code>가 아님 + 막힘 신호 ①~④ 중 <b>1개 이상</b></td><td>REQ-2026-007: 12/14 입사(D-21), 연동미완료 + 승인대기</td></tr>
+      <tr><td><span class="badge teal">정상</span></td><td>지급상태가 <code>지급완료</code>이거나, 막힘 신호가 하나도 없음 (예: 지급대기 + 연동완료)</td><td>REQ-2026-004: 12/07 입사(D-14), 연동완료 + 지급대기</td></tr>
+    </table>
+    <p style="font-size:14px;color:var(--faint)">입사까지 31일 이상 남은 건은 막힘 신호가 있어도 이번 점검에서는 등급을 매기지 않고 목록에만 남깁니다.</p>
   </section>
 
   <section class="card" id="s1-2">
@@ -139,12 +149,13 @@
     <div class="copybox"><div class="label">요청문<button type="button">복사</button></div><pre>gs-equipment-check 스킬로 점검해줘. 기준일은 2026-11-23이야. 첨부한 신규입사자 장비 신청표를 점검해서 위험 건, 상태별 집계, 주변기기 수량, 확인이 필요한 질문을 정리해줘.</pre></div>
     <div class="check" data-id="p1-test">
       <div class="check-h"><span>Step 1 검증 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <p class="ckhint">각 항목이 <b>정답</b>입니다. AI 결과를 보고 항목과 같으면 체크하세요. 다르면 아래 "결과가 다르게 나왔다면?"을 보세요.</p>
       <label><input type="checkbox">① 첫 줄에 기준일 <b>2026-11-23</b>이 적혀 있음</label>
       <label><input type="checkbox">② <b>긴급 1건</b>: REQ-2026-003 (12/01 입사, D-8, 연동미완료 · 재고확인중)</label>
       <label><input type="checkbox">③ <b>주의 4건</b>: REQ-2026-007, 009, 011, 013</label>
-      <label><input type="checkbox">④ 지급상태 집계: 지급대기 7 · 지급완료 3 · 승인대기 3 · 재고확인중 2</label>
-      <label><input type="checkbox">⑤ 27인치 모니터가 총 6대(이미 지급된 REQ-001 포함)로 세어지고, REQ-009는 <b>"재고 정본 확인 필요"</b>로 표시됨 (Step 2에서 넣은 규칙)</label>
-      <label><input type="checkbox">⑥ 비고에 없는 사정을 지어내지 않음 (예: 없는 담당자 이름, 없는 입고 날짜)</label>
+      <label><input type="checkbox">④ 지급상태 집계: 지급완료 3 · 지급대기 7 · 승인대기 3 · 재고확인중 2</label>
+      <label><input type="checkbox">⑤ 27인치 모니터가 총 6대(이미 지급된 REQ-001 포함). REQ-009는 <b>"재고 정본 확인 필요"</b>로 표시됨 (Step 2에서 넣은 규칙)</label>
+      <label><input type="checkbox">⑥ 비고에 없는 내용은 임의로 만들지 않음 (예: 없는 담당자 이름, 없는 입고 날짜)</label>
     </div>
     <details>
       <summary>결과가 다르게 나왔다면?</summary>
@@ -198,7 +209,7 @@
     <table>
       <tr><th>구분</th><th>파일</th><th>설명</th><th>내려받기</th></tr>
       <tr><td><span class="badge">데이터</span></td><td>실습1 · 2 · 3 CSV</td><td>장비 15건, 좌석 15석, 예산 15건</td><td><a class="dl" href="files/data/실습1_신규입사자_장비신청.csv" download>⬇ 장비</a> <a class="dl" href="files/data/실습2_좌석배치_현황.csv" download>⬇ 좌석</a> <a class="dl" href="files/data/실습3_총무_예산정산.csv" download>⬇ 예산</a></td></tr>
-      <tr><td><span class="badge blue">규칙</span></td><td>AGENTS_총무팀.md</td><td>어떤 데이터가 진짜인지, 무엇을 하면 안 되는지, 답변 형식</td><td><a class="dl" href="files/AGENTS_총무팀.md" download>⬇ 규칙</a></td></tr>
+      <tr><td><span class="badge blue">규칙</span></td><td>AGENTS_총무팀.md</td><td>어떤 데이터가 진짜인지, 무엇을 하면 안 되는지, 답변 형식</td><td><a class="dl" href="files/AGENTS_총무팀.md" download>⬇ 규칙</a> <a class="dl" href="view.html?f=files/AGENTS_%EC%B4%9D%EB%AC%B4%ED%8C%80.md&amp;back=personal.html%23s2-0">내용 보기</a></td></tr>
       <tr><td><span class="badge teal">지식 카드</span></td><td>카드 3장</td><td>시트에 안 적힌 맥락: 개편 전후 부서명, 모니터 재고 충돌, 웰컴키트 의존성</td><td><a class="dl" href="files/cards/조직개편_부서명_매핑.md" download>⬇ 부서명</a> <a class="dl" href="files/cards/모니터재고_장비지급.md" download>⬇ 재고</a> <a class="dl" href="files/cards/웰컴키트_품의_입사자지급.md" download>⬇ 웰컴키트</a></td></tr>
     </table>
   </section>
@@ -224,6 +235,7 @@
     <h3><span class="step">Step 1</span>프로젝트 만들기</h3>
     <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
       <ol><li>왼쪽 메뉴 <b>Projects</b> → 오른쪽 위 <b>＋ New Project</b></li><li>이름: <code>총무 데이터 컨시어지</code>, 공개 범위는 <b>나만 보기(Private)</b></li><li><b>Create project</b>를 누릅니다.</li></ol>
+      <p style="margin:8px 0 0;font-size:14px"><b>"프로젝트 폴더 선택" 창이 뜨면</b> (데스크톱 앱): 파일이 아니라 <b>폴더</b>를 고르는 방식입니다. 파일이 흐리게 보여 선택이 안 되는 게 정상이에요. 아래 Step 3의 <b>"폴더 방식"</b>대로 <code>총무실습</code> 폴더를 먼저 만들고 그 폴더를 고르세요.</p>
     </div>
     <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span>
       <ol><li>왼쪽 메뉴 <b>New project</b>(새 프로젝트)를 누릅니다.</li><li>이름: <code>총무 데이터 컨시어지</code>, 아이콘·색은 자유롭게</li><li>만들기를 누르면 사이드바 맨 위에 프로젝트가 생깁니다.</li></ol>
@@ -252,7 +264,17 @@
 [기준일] / [한눈 요약] 3줄 / [근거] / [충돌] 없으면 "없음" / [빈 곳] 없으면 "없음" / [사람이 할 다음 행동]</pre></div>
 
     <h3><span class="step">Step 3</span>파일 7개 올리기</h3>
-    <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span><p style="margin:4px 0">프로젝트 화면 오른쪽 <b>Files</b>(프로젝트 지식) 옆 <b>＋</b> → 파일 업로드로 <b>CSV 3개 + AGENTS_총무팀.md + 카드 3장</b>을 올립니다.</p></div>
+    <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
+      <p style="margin:4px 0"><b>웹(claude.ai):</b> 프로젝트 화면 오른쪽 <b>Files</b>(프로젝트 지식) 옆 <b>＋</b> → 파일 업로드로 <b>CSV 3개 + AGENTS_총무팀.md + 카드 3장</b>을 올립니다.</p>
+      <p style="margin:8px 0 4px"><b>데스크톱 앱 (폴더 방식):</b> "프로젝트 폴더 선택" 창이 뜨면</p>
+      <ol>
+        <li>Finder에서 새 폴더 <code>총무실습</code>을 만들고, 내려받은 <b>7개 파일</b>을 그 안에 넣습니다. 파일 이름 끝에 <code>(1)</code>이 붙은 중복 파일은 넣지 않아요.</li>
+        <li>"프로젝트 폴더 선택" 창에서 <code>총무실습</code> <b>폴더</b>를 한 번 클릭해 고르고 <b>열기</b>를 누릅니다. (폴더 안으로 들어가면 안 돼요)</li>
+        <li><b>"Claude가 '총무실습'의 파일을 변경하도록 허용하시겠습니까?"</b> 창이 뜨면 <b>허용</b>을 누릅니다. Claude가 폴더 안 파일을 읽으려면 권한이 필요해요. 실습 폴더에는 가상 파일만 있으니 괜찮고, <b>항상 허용</b>보다는 그때그때 <b>허용</b>을 권합니다.</li>
+        <li>Step 3 예약 작업에서는 이 폴더 말고 <code>총무실습 2</code> 폴더를 따로 만들어 씁니다.</li>
+      </ol>
+      <p style="margin:6px 0 0;font-size:14px;color:var(--faint)">💡 이 창이 바로 Part 2에서 다룰 "권한은 주는 게 아니라 빌려주는 것"의 실제 예입니다. 실제 업무 폴더라면 무엇을 허용할지 한 번 더 생각해 보세요.</p>
+    </div>
     <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span><p style="margin:4px 0">프로젝트 화면의 <b>파일 추가</b>(Add files)로 <b>CSV 3개 + AGENTS_총무팀.md + 카드 3장</b>을 올립니다. 올린 파일은 프로젝트 소스 목록에서 확인할 수 있습니다.</p></div>
     <div class="ok">프로젝트 파일 목록에 <b>7개</b>가 모두 보이면 준비 끝입니다.</div>
     <div class="callout amber"><div class="t">실제 업무에서는?</div><p>실습에서는 파일을 직접 올리지만, 실제 업무에서는 원본이 바뀌면 다시 올려야 합니다. 어느 파일이 "진짜"인지, 누가 언제 갱신하는지는 Part 2에서 팀으로 정합니다.</p></div>
@@ -275,6 +297,7 @@
     <p><b>확인 포인트:</b> 장부 기준 <b>96.5%</b>(166,970,000 ÷ 173,000,000)와 지급 기준 <b>75.8%</b>(131,070,000 ÷ 173,000,000)를 둘 다 보여 줘야 합니다.</p>
     <div class="check" data-id="p2-test">
       <div class="check-h"><span>Step 2 검증 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <p class="ckhint">각 항목이 <b>정답</b>입니다. AI 결과를 보고 항목과 같으면 체크하세요. 다르면 아래 "함정 문제를 틀렸다면?"을 보세요.</p>
       <label><input type="checkbox">① 모니터 5대 + 재고 <b>충돌을 둘 다</b> 보여 줌</label>
       <label><input type="checkbox">② REQ-2026-001 소속을 <b>"확정 불가"</b>로 답함</label>
       <label><input type="checkbox">③ 12월 사옥관리비를 <b>추정하지 않음</b></label>
@@ -318,7 +341,7 @@
       <div class="check-h"><span>준비 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
       <label data-tool="claude"><input type="checkbox"><b>Claude 데스크톱 앱</b>을 설치하고 회사 계정으로 로그인</label>
       <label data-tool="claude"><input type="checkbox">앱에서 <b>Cowork</b>와 왼쪽 <b>Scheduled</b>(예약) 메뉴가 보이는지 확인 (Team 플랜은 관리자가 켜야 보여요)</label>
-      <label data-tool="claude"><input type="checkbox">내 컴퓨터에 <code>총무실습</code> 폴더를 만들고 장비·좌석 CSV 2개를 넣기</label>
+      <label data-tool="claude"><input type="checkbox">내 컴퓨터에 <code>총무실습 2</code> 폴더를 만들고 <code>실습1_신규입사자_장비신청.csv</code>, <code>실습2_좌석배치_현황.csv</code> 파일 2개 넣기 (Step 2의 <code>총무실습</code> 폴더와 따로 만들어요)</label>
       <label data-tool="chatgpt"><input type="checkbox">채팅 화면에서 <b>Work</b>를 고를 수 있는지 확인 (플랜·관리자 설정에 따라 다름)</label>
       <label data-tool="chatgpt"><input type="checkbox">Step 2의 <code>총무 데이터 컨시어지</code> 프로젝트에 장비·좌석 CSV가 들어 있는지 확인</label>
     </div>
@@ -329,7 +352,7 @@
     <div class="sec-h"><div class="num">1</div><h2>완성할 워크플로우 구조</h2><span class="time">3분</span></div>
     <ul class="flow">
       <li><b>① 언제</b>테스트: 지금 한 번 실행 (기준일 2026-11-23)<br>완성: 매주 월요일 아침</li>
-      <li><b>② 읽기</b><span data-tool="claude">내 <code>총무실습</code> 폴더의 CSV 2개</span><span data-tool="chatgpt">프로젝트의 장비·좌석 CSV</span></li>
+      <li><b>② 읽기</b><span data-tool="claude">내 <code>총무실습 2</code> 폴더의 CSV 2개 (장비신청·좌석배치)</span><span data-tool="chatgpt">프로젝트의 장비·좌석 CSV</span></li>
       <li><b>③ 점검·작성</b>장비 위험 등급 + 좌석 진척·막힌 곳 + 확인 질문</li>
       <li><b>④ 남기기</b><span data-tool="claude">폴더 안 <code>브리핑/</code>에 md 파일로 저장</span><span data-tool="chatgpt">예약 작업 결과로 내 채팅에 도착</span></li>
     </ul>
@@ -341,7 +364,7 @@
     <h3><span class="step">Step 1</span>작업을 한 번 직접 실행해 보기</h3>
     <p>바로 예약하지 말고, 먼저 <b>한 번 실행해서 결과가 맞는지</b> 확인합니다. 맞게 나온 과정을 그대로 예약으로 바꾸는 것이 가장 안전합니다.</p>
     <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
-      <ol><li>데스크톱 앱에서 <b>Cowork</b>로 새 작업을 엽니다.</li><li>작업 폴더로 <code>총무실습</code>을 고릅니다.</li><li>아래 지시문을 붙여 넣고 실행합니다.</li></ol>
+      <ol><li>데스크톱 앱에서 <b>Cowork</b>로 새 작업을 엽니다.</li><li>작업 폴더로 <code>총무실습 2</code>를 고릅니다. (파일 변경 허용 창이 뜨면 <b>허용</b>)</li><li>아래 지시문을 붙여 넣고 실행합니다.</li></ol>
     </div>
     <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span>
       <ol><li><code>총무 데이터 컨시어지</code> 프로젝트를 엽니다.</li><li>입력창에서 <b>Work</b>를 고르고 새 대화를 시작합니다.</li><li>아래 지시문을 붙여 넣고 실행합니다.</li></ol>
@@ -349,8 +372,10 @@
     <div class="copybox"><div class="label">점검 지시문 (기준일 고정 테스트용)<button type="button">복사</button></div><pre>기준일 2026-11-23으로 장비 신청표와 좌석 현황표를 점검해 총무팀 주간 브리핑을 작성해줘.
 
 [장비]
-- 긴급: 입사까지 14일 이내 + 지급완료 아님 + (연동미완료·오류확인필요·재고확인중·승인대기 중 하나)
-- 주의: 입사까지 15~30일 + 위 조건 중 하나
+- 막힘 신호 4가지: ① 인사시스템 연동여부가 '연동미완료' ② 인사시스템 연동여부가 '오류확인필요' ③ 지급상태가 '재고확인중' ④ 지급상태가 '승인대기'
+- 긴급: 입사까지 14일 이내 + 지급상태가 '지급완료'가 아님 + 막힘 신호 ①~④ 중 1개 이상
+- 주의: 입사까지 15~30일 + 지급상태가 '지급완료'가 아님 + 막힘 신호 ①~④ 중 1개 이상
+- 정상: 지급완료이거나 막힘 신호가 없음
 - 건마다 "신청번호 | 입사일(D-n) | 막힌 이유 | 다음 할 일" 한 줄. 막힌 이유는 비고에 적힌 내용만 쓴다.
 - 비고에 '재고'가 있으면 "재고 정본 확인 필요"로 표시한다.
 
@@ -362,15 +387,53 @@
 첫 줄: 기준일 / 한눈 요약 3줄 / 장비 표 / 좌석 표 / 확인이 필요한 질문
 개인 이름 대신 신청번호와 좌석코드를 쓴다. 시트에 없는 내용은 만들지 않는다.
 결과는 나에게만 보여 주고, 메일이나 메신저로 보내지 않는다.</pre></div>
-    <p data-tool="claude" style="font-size:14px;color:var(--muted)">Claude에는 마지막에 "결과를 <code>브리핑/총무주간점검_2026-11-23.md</code> 파일로 저장해줘"를 덧붙이면 폴더에 파일로 남습니다.</p>
+    <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
+      <p style="margin:4px 0">결과를 파일로 남기려면 지시문 <b>맨 끝에 아래 한 줄을 덧붙여</b> 함께 보내세요. 그러면 <code>총무실습 2</code> 폴더 안에 <code>브리핑</code> 폴더가 생기고, 그 안에 브리핑 파일이 저장됩니다.</p>
+    </div>
+    <div class="copybox" data-tool="claude"><div class="label">Claude: 지시문 끝에 덧붙일 한 줄<button type="button">복사</button></div><pre>결과를 브리핑/총무주간점검_2026-11-23.md 파일로 저장해줘.</pre></div>
 
-    <h3><span class="step">Step 2</span>결과 확인 (아래 3번 체크리스트)</h3>
-    <p>체크리스트가 모두 맞으면 다음 단계로, 틀린 곳이 있으면 지시문을 고쳐 다시 실행합니다.</p>
+    <h3><span class="step">Step 2</span>결과가 맞는지 확인하기</h3>
+    <p>AI가 만든 브리핑을 <b>아래 정답 기준표와 한 줄씩 비교</b>합니다. 번호·숫자가 같으면 맞은 것이고, 하나라도 다르거나 빠지거나 더 있으면 틀린 것입니다. (기준일 2026-11-23 기준)</p>
+    <h4>브리핑은 어디서 보나요?</h4>
+    <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
+      <ul>
+        <li><b>Cowork 작업 화면:</b> 실행이 끝나면 대화창에 브리핑 내용이 보이고, 저장한 파일 이름이 함께 표시됩니다. 파일 이름을 누르면 바로 열려요.</li>
+        <li><b>Finder:</b> <code>총무실습 2</code> 폴더 → <code>브리핑</code> 폴더 → <code>총무주간점검_2026-11-23.md</code> (텍스트 편집기로 열기)</li>
+        <li><code>브리핑</code> 폴더가 없다면 위의 "덧붙일 한 줄"을 빠뜨린 것입니다. 대화창에 나온 내용으로 확인하거나, 그 한 줄을 다시 보내세요.</li>
+      </ul>
+    </div>
+    <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span>
+      <ul><li>브리핑은 방금 실행한 <b>Work 대화창</b>에 그대로 나옵니다. 따로 파일을 찾을 필요는 없어요.</li></ul>
+    </div>
+    <h4>장비: 위험 건 정답 (5건, 나머지 10건은 정상)</h4>
+    <table>
+      <tr><th>등급</th><th>신청번호</th><th>입사일 (D-n)</th><th>막힘 신호</th><th>비고 (막힌 이유의 근거)</th></tr>
+      <tr><td><span class="badge red">긴급</span></td><td>REQ-2026-003</td><td>12/01 (D-8)</td><td>연동미완료 · 재고확인중</td><td>인사시스템 사번 미발급으로 수동 확인 필요</td></tr>
+      <tr><td><span class="badge amber">주의</span></td><td>REQ-2026-007</td><td>12/14 (D-21)</td><td>연동미완료 · 승인대기</td><td>보안팀장 결재 대기 및 인사DB 동기화 지연</td></tr>
+      <tr><td><span class="badge amber">주의</span></td><td>REQ-2026-009</td><td>12/14 (D-21)</td><td>재고확인중</td><td>모니터 재고 부족으로 발주 요청 → <b>"재고 정본 확인 필요"</b> 표시</td></tr>
+      <tr><td><span class="badge amber">주의</span></td><td>REQ-2026-011</td><td>12/21 (D-28)</td><td>오류확인필요 · 승인대기</td><td>고사양 특수 스펙 승인 및 인사연동 오류 점검</td></tr>
+      <tr><td><span class="badge amber">주의</span></td><td>REQ-2026-013</td><td>12/21 (D-28)</td><td>연동미완료 · 승인대기</td><td>계약직 전환 입사자 인사시스템 반영 대기</td></tr>
+    </table>
+    <h4>좌석: 정답</h4>
+    <table>
+      <tr><th>항목</th><th>정답</th></tr>
+      <tr><td>재배치 진척</td><td>이동 대상 <b>10석 중 배치완료 2석 = 20%</b> (전체 15석 기준 7석 = 46.7%와 구분해서 써야 함)</td></tr>
+      <tr><td>조율중 좌석 (3석)</td><td>PA-5F-B06: 공용 락커 추가 배정 요청<br>PA-7F-A01: 폰부스 인접 구역 배정 요청<br>PA-7F-B09: 직사광선 차단 블라인드 구역 희망</td></tr>
+    </table>
+    <h4>이렇게 판단하세요</h4>
+    <table>
+      <tr><th>브리핑 결과</th><th>판단</th><th>할 일</th></tr>
+      <tr><td>위 표와 번호·숫자가 모두 같음</td><td><span class="badge teal">맞음</span></td><td>Step 3 예약 작업으로 넘어가기</td></tr>
+      <tr><td>위험 건이 빠지거나 더 있음, D-n이 다름</td><td><span class="badge red">틀림</span></td><td>지시문 첫 줄의 기준일(2026-11-23)과 등급 조건이 그대로 들어갔는지 확인 → 다시 실행</td></tr>
+      <tr><td>진척률이 46.7%로만 나옴</td><td><span class="badge red">틀림</span></td><td>"이동 대상 중 배치완료 비율"을 따로 달라고 후속 요청</td></tr>
+      <tr><td>비고에 없는 이유·담당자·날짜가 나옴</td><td><span class="badge red">틀림</span></td><td>"비고에 적힌 내용만 써줘"라고 후속 요청</td></tr>
+      <tr><td>사람 이름이 보임</td><td><span class="badge amber">고칠 것</span></td><td>"이름 대신 신청번호·좌석코드로 써줘"라고 후속 요청</td></tr>
+    </table>
 
     <h3><span class="step">Step 3</span>매주 예약 작업으로 바꾸기</h3>
     <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
       <p style="margin:4px 0"><b>방법 A (대화로):</b> 방금 작업 대화에서 아래 요청을 보냅니다 → Claude가 제안한 이름·일정·지시를 확인 → <b>Schedule</b>을 누릅니다.</p>
-      <p style="margin:4px 0"><b>방법 B (직접):</b> 왼쪽 <b>Scheduled</b> → 오른쪽 위 <b>New task</b> → <b>Set up manually</b> → 작업 이름, 지시문, 승인 방식, 주기(<b>weekly</b>), 작업 폴더(<code>총무실습</code>)를 넣고 <b>Save</b></p>
+      <p style="margin:4px 0"><b>방법 B (직접):</b> 왼쪽 <b>Scheduled</b> → 오른쪽 위 <b>New task</b> → <b>Set up manually</b> → 작업 이름, 지시문, 승인 방식, 주기(<b>weekly</b>), 작업 폴더(<code>총무실습 2</code>)를 넣고 <b>Save</b></p>
       <p style="margin:4px 0;font-size:14px;color:var(--faint)">폴더를 지정한 작업은 <b>컴퓨터가 켜져 있고 Claude 데스크톱 앱이 열려 있을 때만</b> 실행됩니다.</p>
     </div>
     <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span>
@@ -383,7 +446,8 @@
     <div class="sec-h"><div class="num">3</div><h2>실행 검증</h2><span class="time">5분</span></div>
     <div class="check" data-id="p3-test">
       <div class="check-h"><span>Step 3 검증 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
-      <label><input type="checkbox">① 결과가 <b>나에게만</b> 남았고(<span data-tool="claude">내 폴더의 브리핑 파일</span><span data-tool="chatgpt">내 Work 대화</span>), 첫 줄에 기준일이 있음</label>
+      <p class="ckhint">각 항목이 <b>정답</b>입니다. AI 결과를 보고 항목과 같으면 체크하세요. 다르면 위 Step 2의 정답 기준표와 "이렇게 판단하세요" 표를 보세요.</p>
+      <label><input type="checkbox">① 브리핑이 <b>나만 보는 곳</b>에만 있음 (<span data-tool="claude"><code>총무실습 2/브리핑</code> 폴더의 파일 또는 Cowork 대화창</span><span data-tool="chatgpt">내 Work 대화창</span>). 메일·메신저로 보내지지 않았고, 첫 줄에 기준일(2026-11-23)이 있음</label>
       <label><input type="checkbox">② 장비 긴급: <b>REQ-2026-003</b> 1건 / 주의: <b>007 · 009 · 011 · 013</b> 4건</label>
       <label><input type="checkbox">③ 좌석: 이동 대상 10석 중 배치완료 2석 (<b>20%</b>), 조율중 <b>PA-5F-B06 · PA-7F-A01 · PA-7F-B09</b></label>
       <label><input type="checkbox">④ 개인 이름 대신 신청번호·좌석코드로 쓰여 있음</label>

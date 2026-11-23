@@ -22,6 +22,13 @@
       else{var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();done();}
     });
   });
+  // checklist labels: keep the text after the checkbox in one line flow (flex would split <b> into columns)
+  document.querySelectorAll('.check label').forEach(function(lb){
+    var inp=lb.querySelector('input'); if(!inp || lb.querySelector(':scope > span.lt')) return;
+    var sp=document.createElement('span'); sp.className='lt';
+    while(inp.nextSibling){ sp.appendChild(inp.nextSibling); }
+    lb.appendChild(sp);
+  });
   // checklists with progress (saved in browser)
   document.querySelectorAll('.check').forEach(function(ck){
     var id=ck.dataset.id||''; var boxes=ck.querySelectorAll('input[type=checkbox]');
