@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 2 팀 실습 | 총무 AI LAB</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="team-page">
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="index.html"><span class="tag" style="background:#115e59">총무 AI LAB</span>Part 2 · 팀 실습</a>
+    <nav class="labs" aria-label="실습 단계 선택">
+      <a href="#t1"><small>Step 1</small>정본 지도</a>
+      <a href="#t2"><small>Step 2</small>지식 카드</a>
+      <a href="#t3"><small>Step 3</small>팀 에이전트·채점</a>
+      <a href="#t4"><small>Step 4</small>업데이트 루틴</a>
+      <a href="#guide"><small>진행자</small>가이드</a>
+    </nav>
+  </div>
+  <nav class="toc" aria-label="목차">
+    <div class="wrap" data-lab="t1"><a href="#t1-0">0. 팀 구성·준비</a><a href="#t1-1">1. 워밍업</a><a href="#t1-2">2. 정본 판정</a><a href="#t1-3">3. 문제 찾기</a><a href="#t1-4">4. 정리</a></div>
+    <div class="wrap" data-lab="t2"><a href="#t2-1">1. 지식 카드란</a><a href="#t2-2">2. 카드 초안</a><a href="#t2-3">3. 짝 검토</a><a href="#t2-4">4. 정리</a></div>
+    <div class="wrap" data-lab="t3"><a href="#t3-1">1. 규칙 합의</a><a href="#t3-2">2. 팀 에이전트</a><a href="#t3-3">3. 1라운드 채점</a><a href="#t3-4">4. 고치고 2라운드</a></div>
+    <div class="wrap" data-lab="t4"><a href="#t4-1">1. 업데이트 루틴</a><a href="#t4-2">2. 회고·발표</a></div>
+    <div class="wrap" data-lab="guide"><a href="#g-1">1. 시간표·자료</a><a href="#g-2">2. 정답</a><a href="#g-3">3. 진행 팁</a></div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<!-- ===================== T1 ===================== -->
+<article class="lab" id="t1">
+  <div class="hero team">
+    <div class="pills"><span class="pill">Part 2 · Step 1</span><span class="pill ghost">팀 활동 · Second Brain 만들기</span></div>
+    <h1>각자 만든 에이전트가 같은 질문에 다르게 답한다면?<br>먼저 "진짜 데이터"부터 정합니다</h1>
+    <p>Part 1에서 만든 에이전트는 사람마다 답이 조금씩 달랐을 겁니다. 원인은 대부분 AI가 아니라 <b>데이터</b>에 있습니다. 어느 시트가 진짜인지, 시트끼리 어디가 안 맞는지 팀이 함께 찾아 <b>정본 지도</b>를 만듭니다.</p>
+    <div class="meta"><span>⏱ 약 20분</span><span>👥 4~5명 한 팀</span><span>📄 결과물: 정본지도.md</span></div>
+  </div>
+
+  <section class="card" id="t1-0">
+    <div class="sec-h"><div class="num">0</div><h2>팀 구성 및 준비</h2><span class="time">3분</span></div>
+    <div class="callout teal"><div class="t">🧠 Second Brain이 뭔가요?</div><p>사람과 AI가 같이 보는 <b>팀의 공용 기억</b>입니다. 시트 같은 데이터 자체가 아니라, <b>"어느 데이터가 진짜인가(정본), 시트에 안 적힌 사정은 무엇인가(지식 카드), 어떻게 판단해야 하나(규칙)"</b>를 정리해 둔 것입니다. 오늘 Part 2 전체가 이걸 만드는 과정입니다.</p></div>
+    <h4>역할 나누기</h4>
+    <table>
+      <tr><th>역할</th><th>하는 일</th><th>맡을 데이터</th></tr>
+      <tr><td><b>장비 오너</b></td><td>장비 시트의 정본 판정, 장비 카드 작성</td><td>실습1 장비신청</td></tr>
+      <tr><td><b>좌석 오너</b></td><td>좌석 시트의 정본 판정, 좌석 카드 작성</td><td>실습2 좌석배치</td></tr>
+      <tr><td><b>예산 오너</b></td><td>정산 시트의 정본 판정, 예산 카드 작성</td><td>실습3 예산정산</td></tr>
+      <tr><td><b>규칙 지기</b></td><td>팀 AGENTS.md 정리, 팀 에이전트 화면 조작</td><td>AGENTS_총무팀.md</td></tr>
+      <tr><td><b>평가자</b></td><td>시간 관리, 채점, 기록 (4명 팀이면 규칙 지기가 겸임)</td><td>평가질문 문제지</td></tr>
+    </table>
+    <table>
+      <tr><th>파일</th><th>쓰는 곳</th><th>내려받기</th></tr>
+      <tr><td>실습 CSV 3종</td><td>모든 활동</td><td><a class="dl" href="files/data/실습1_신규입사자_장비신청.csv" download>⬇ 장비</a> <a class="dl" href="files/data/실습2_좌석배치_현황.csv" download>⬇ 좌석</a> <a class="dl" href="files/data/실습3_총무_예산정산.csv" download>⬇ 예산</a></td></tr>
+      <tr><td>정본지도_템플릿.md</td><td>Step 1</td><td><a class="dl" href="files/team/정본지도_템플릿.md" download>⬇ 템플릿</a></td></tr>
+      <tr><td>카드_템플릿.md</td><td>Step 2</td><td><a class="dl" href="files/team/카드_템플릿.md" download>⬇ 템플릿</a></td></tr>
+      <tr><td>AGENTS_총무팀.md</td><td>Step 3</td><td><a class="dl" href="files/AGENTS_총무팀.md" download>⬇ 규칙</a></td></tr>
+      <tr><td>평가질문_문제지.md</td><td>Step 3</td><td><a class="dl" href="files/team/평가질문_문제지.md" download>⬇ 문제지</a></td></tr>
+    </table>
+    <p style="font-size:14px;color:var(--faint)">템플릿은 Google Docs나 메모장에 붙여 넣어 같이 편집하면 편합니다. 팀당 문서 하나를 같이 쓰세요.</p>
+  </section>
+
+  <section class="card" id="t1-1">
+    <div class="sec-h"><div class="num">1</div><h2>워밍업: 우리 에이전트들은 왜 다르게 답했나</h2><span class="time">4분</span></div>
+    <p>Part 1 Step 2의 테스트 ①~④ 결과를 돌아가며 말해 봅니다.</p>
+    <table>
+      <tr><th>테스트</th><th>질문</th><th>우리 팀 결과</th></tr>
+      <tr><td>①</td><td>미지급 27인치 모니터와 재고</td><td>___명 정답 / ___명 오답</td></tr>
+      <tr><td>②</td><td>REQ-2026-001의 개편 후 소속 (함정)</td><td>___명 정답 / ___명 오답</td></tr>
+      <tr><td>③</td><td>12월 사옥관리비 (함정)</td><td>___명 정답 / ___명 오답</td></tr>
+      <tr><td>④</td><td>10~11월 집행률 두 기준</td><td>___명 정답 / ___명 오답</td></tr>
+    </table>
+    <div class="callout amber"><div class="t">생각해 볼 질문</div><p>틀린 답은 AI가 "멍청해서"였을까요, 아니면 <b>데이터가 서로 안 맞거나 빠져 있어서</b>였을까요? 다음 활동에서 확인합니다.</p></div>
+  </section>
+
+  <section class="card" id="t1-2">
+    <div class="sec-h"><div class="num">2</div><h2>활동 A · 정본 판정</h2><span class="time">6분</span></div>
+    <p>오너마다 자기 시트를 보고 <code>정본지도_템플릿.md</code> 1절을 채웁니다. 시트의 각 정보가 아래 넷 중 무엇인지 정합니다.</p>
+    <table>
+      <tr><th>판정</th><th>뜻</th><th>예</th></tr>
+      <tr><td><span class="badge teal">정본</span></td><td>이 값이 처음 만들어지고, 틀리면 여기를 고친다</td><td>장비 지급상태</td></tr>
+      <tr><td><span class="badge">사본</span></td><td>다른 시스템의 값을 옮겨 적은 것</td><td>인사시스템 연동여부</td></tr>
+      <tr><td><span class="badge amber">작업본</span></td><td>원래 시스템에서 가져와 정리 중인 것. 원래 시스템이 맞다</td><td>정산 시트 (전자결재가 원래)</td></tr>
+      <tr><td><span class="badge blue">검산 대상</span></td><td>다른 값으로 계산한 결과. 근거로 쓰지 않고 맞는지 확인만 한다</td><td>정산 시트 오른쪽 요약표</td></tr>
+    </table>
+    <h4>판정할 때 던질 질문 3개</h4>
+    <ul class="clean"><li>이 값을 <b>처음 입력하는 곳</b>은 어디인가?</li><li>이 값이 틀리면 <b>누가, 어디를</b> 고치나?</li><li>이 시트와 원래 시스템이 다르면 <b>어느 쪽이 맞나?</b></li></ul>
+    <h4>공통 키도 확인하세요 (템플릿 2절)</h4>
+    <p>세 시트를 <b>같은 사람, 같은 부서</b> 단위로 이을 수 있는 열이 있나요? 사람은 무엇으로, 부서는 무엇으로 구분하고 있나요?</p>
+  </section>
+
+  <section class="card" id="t1-3">
+    <div class="sec-h"><div class="num">3</div><h2>활동 B · 문제 찾기 게임</h2><span class="time">7분</span></div>
+    <p>세 시트를 나란히 놓고 <b>서로 안 맞거나 빠진 곳</b>을 찾습니다. 이 데이터에는 아래 6종류의 문제가 하나 이상씩 숨어 있습니다. 많이 찾은 팀이 이깁니다.</p>
+    <div class="grid3">
+      <div class="tile"><span class="badge">① 키 없음</span><p>사람을 무엇으로 구분하고 있나?</p></div>
+      <div class="tile"><span class="badge">② 용어 충돌</span><p>장비 시트의 소속부서와 좌석 시트의 개편 후 부서를 비교해 보면?</p></div>
+      <div class="tile"><span class="badge">③ 시트 간 충돌</span><p>장비 비고와 정산 비고에서 같은 물건 이야기를 찾아보면?</p></div>
+      <div class="tile"><span class="badge">④ 빠짐</span><p>장비 비고에 나온 좌석이 좌석 시트에 있나?</p></div>
+      <div class="tile"><span class="badge">⑤ 숨은 의존성</span><p>정산의 품의진행 건 중 장비 지급에 영향을 주는 것은?</p></div>
+      <div class="tile"><span class="badge">⑥ 기준 미정</span><p>요약표 "집행 합계"에는 어떤 결재상태까지 들어가 있나?</p></div>
+    </div>
+    <h4>AI에게도 찾게 해 보세요 (선택)</h4>
+    <div class="copybox"><div class="label">문제 찾기 프롬프트 (CSV 3개 첨부 후)<button type="button">복사</button></div><pre>첨부한 총무 시트 3개(장비신청, 좌석배치, 예산정산)를 서로 교차해서 확인해줘.
+1) 같은 대상인데 이름이 다른 곳 2) 시트끼리 내용이 다른 곳 3) 한 시트에는 있는데 다른 시트에는 빠진 곳 4) 한 건이 다른 건의 일정에 영향을 주는 곳 5) 세 시트를 이을 공통 열이 있는지
+를 찾아서, 각각 근거(시트·행·문구)를 붙여 표로 정리해줘. 추측이면 '추측'이라고 표시해줘.</pre></div>
+    <p>AI가 찾은 것과 팀이 찾은 것을 비교해 보세요. <b>AI가 놓친 것, AI가 잘못 짚은 것</b>도 기록합니다.</p>
+    <details><summary>정답 확인 (활동이 끝난 뒤 여세요)</summary>
+      <table>
+        <tr><th>#</th><th>문제</th><th>근거</th></tr>
+        <tr><td>①</td><td>세 시트 어디에도 <b>사번</b>이 없어 사람 단위로 장비·좌석·비용을 이을 수 없음</td><td>세 시트 헤더</td></tr>
+        <tr><td>②</td><td>장비 시트 소속은 <b>개편 전 부서명</b>. 클라우드플랫폼팀 · AI서비스기획팀 · 경영지원실 총무팀은 개편 후 <b>둘로 갈림</b></td><td>장비 D열, 좌석 C·D열</td></tr>
+        <tr><td>③</td><td>10월 정산 "27인치 4K 모니터 예비 재고 10세트 확보" vs REQ-2026-009 "모니터 재고 부족으로 발주 요청"</td><td>정산 4행, 장비 REQ-009</td></tr>
+        <tr><td>④</td><td>REQ-2026-001 "5층 좌석 사전 배치 완료"인데 좌석 시트에 해당 좌석 없음</td><td>장비 REQ-001, 좌석 시트</td></tr>
+        <tr><td>⑤</td><td>웰컴키트 제작 11월 <b>품의진행</b> ↔ REQ-2026-008(12/14 입사) "웰컴키트 동봉 예정"</td><td>정산 14행, 장비 REQ-008</td></tr>
+        <tr><td>⑥</td><td>요약표 집행률 96.5%는 품의진행·결재완료까지 넣은 <b>장부 기준</b>. 지급 기준은 75.8%</td><td>정산 K~M열</td></tr>
+      </table>
+    </details>
+  </section>
+
+  <section class="card" id="t1-4">
+    <div class="sec-h"><div class="num">✓</div><h2>Step 1 정리</h2></div>
+    <div class="check" data-id="t1-done">
+      <div class="check-h"><span>Step 1 결과물 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">정본지도 1절: 8개 정보마다 정본 / 사본 / 작업본 / 검산 대상 판정</label>
+      <label><input type="checkbox">정본지도 2절: 공통 키 문제와 제안 (예: 사번 열 추가)</label>
+      <label><input type="checkbox">정본지도 3절: 찾은 문제 4개 이상, 각각 근거(시트·행) 포함</label>
+      <label><input type="checkbox">Part 1에서 에이전트가 틀린 이유를 위 문제와 연결해 봄</label>
+    </div>
+    <div class="callout teal"><div class="t">여기서 배운 것</div><p>에이전트가 틀린 답의 상당수는 <b>데이터가 서로 안 맞거나 빠져 있어서</b>였습니다. 이런 맥락은 시트에 적혀 있지 않으니, 다음 단계에서 <b>지식 카드</b>로 따로 적어 줍니다.</p></div>
+    <a class="next" href="#t2">Step 2 · 지식 카드 만들기 →</a>
+  </section>
+</article>
+
+<!-- ===================== T2 ===================== -->
+<article class="lab" id="t2">
+  <div class="hero team">
+    <div class="pills"><span class="pill">Part 2 · Step 2</span><span class="pill ghost">AI 초안 + 사람 검토</span></div>
+    <h1>시트에 안 적힌 사정을 카드로 남기고,<br>서로 검토해서 "확정"합니다</h1>
+    <p>"보안구역은 출입 권한도 같이", "웰컴키트 품의가 늦으면 동봉 못 함" 같은 지식은 담당자 머릿속에만 있습니다. AI로 카드 초안을 빠르게 만들고, <b>사람이 검토해서 확정한 카드만</b> 에이전트가 근거로 쓰게 합니다.</p>
+    <div class="meta"><span>⏱ 약 25분</span><span>👥 오너 3명 작성 + 짝 검토</span><span>📄 결과물: 확정 카드 4장 이상</span></div>
+  </div>
+
+  <section class="card" id="t2-1">
+    <div class="sec-h"><div class="num">1</div><h2>지식 카드란</h2><span class="time">3분</span></div>
+    <p>모든 것을 적을 수는 없으니, <b>잃어버리면 다시 알아내기 어려운 것</b>만 적습니다.</p>
+    <table>
+      <tr><th>종류</th><th>뜻</th><th>이 데이터에서 찾아볼 곳</th></tr>
+      <tr><td><b>숨은 제약</b></td><td>지키지 않으면 문제가 되는 조건</td><td>좌석 특수요청 (보안구역, 고전력 콘센트, 보안필름)</td></tr>
+      <tr><td><b>의존성</b></td><td>A가 끝나야 B를 할 수 있음</td><td>장비 비고 ↔ 정산 비고 (웰컴키트, 라이선스, 모니터)</td></tr>
+      <tr><td><b>용어</b></td><td>같은 것을 다르게 부름 / 같은 말인데 뜻이 다름</td><td>개편 전후 부서명, 결재상태(품의진행·결재완료·지급완료)</td></tr>
+      <tr><td><b>결정 이유</b></td><td>지금 기준이 이렇게 된 이유</td><td>집행률을 어느 기준으로 보고할지 (아직 미정)</td></tr>
+    </table>
+    <details><summary>잘 쓴 카드 예시 보기</summary>
+<pre style="white-space:pre-wrap;font-size:14px;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px">---
+종류: 의존성
+대상: 신규 입사자 웰컴키트
+키: 정산 시트 14행(2026-11 소모품/비품), 신청번호 REQ-2026-008
+출처: 정산 비고 "디자인 시안 확정", 장비 REQ-008 비고 "웰컴키트 동봉 예정"
+작성일: 2026-11-23
+확인자: (검토자 이름)
+다시 확인할 날: 2026-12-07
+신뢰도: 높음 (두 시트에 직접 적혀 있음)
+상태: 확정
+---
+## 내용
+웰컴키트 제작 품의가 확정·납품되어야 장비 지급 때 동봉할 수 있다.
+## 어기면
+품의 지연 시 입사일에 웰컴키트 없이 장비만 지급.
+## 에이전트 사용 규칙
+장비 점검 시 웰컴키트 동봉 건이 있으면 정산의 웰컴키트 결재상태를 같이 확인해 위험으로 표시한다.</pre>
+    </details>
+  </section>
+
+  <section class="card" id="t2-2">
+    <div class="sec-h"><div class="num">2</div><h2>활동 A · 오너별 카드 초안 2장</h2><span class="time">10분</span></div>
+    <ol class="steps-list">
+      <li>자기 시트 CSV와 <code>카드_템플릿.md</code>를 AI 채팅에 첨부합니다.</li>
+      <li>아래 프롬프트에서 <b>[내 영역]</b>만 바꿔 보냅니다.</li>
+      <li>나온 초안 중 <b>중요한 2장</b>을 골라 직접 다듬습니다. 상태는 <code>검토 대기</code>로 둡니다.</li>
+    </ol>
+    <div class="copybox"><div class="label">카드 초안 프롬프트<button type="button">복사</button></div><pre>첨부한 [내 영역: 장비신청 / 좌석배치 / 예산정산] 시트의 비고·특수요청 열에서 숨은 제약, 의존성, 용어, 결정 이유가 될 만한 것을 찾아 첨부한 카드 템플릿 형식으로 3장 써줘.
+- 출처에는 시트 이름, 행(신청번호·좌석코드·정산월+비용항목), 원래 문구를 그대로 적는다.
+- 한 건만 보고 일반 규칙으로 만든 경우 신뢰도를 '낮음'으로 한다.
+- 개인 이름은 쓰지 말고 신청번호나 좌석코드를 쓴다.
+- 확인자는 비워 두고, 상태는 '검토 대기'로 한다.</pre></div>
+    <details><summary>어떤 카드를 쓸지 막막하다면 (영역별 후보)</summary>
+      <table>
+        <tr><th>영역</th><th>카드 후보</th></tr>
+        <tr><td>장비</td><td>보안 직군 장비 추가 결재(REQ-007) · 개발망 보안 에이전트 사전 설치(REQ-005) · 웰컴키트 동봉 의존성(REQ-008) · 인사연동 상태값 뜻</td></tr>
+        <tr><td>좌석</td><td>8층 A 보안구역 출입통제 연동(PA-8F-A04) · 9층 A 랩 고전력 콘센트(PA-9F-A07) · 개편 전후 부서명 매핑 · 서류 캐비닛 동반 이동(PA-8F-B10)</td></tr>
+        <tr><td>예산</td><td>결재상태 3단계 뜻 · 집행률 보고 기준(결정 대기) · 모니터 재고 충돌 · 품의진행 금액은 견적일 수 있음</td></tr>
+      </table>
+    </details>
+  </section>
+
+  <section class="card" id="t2-3">
+    <div class="sec-h"><div class="num">3</div><h2>활동 B · 짝 검토 (승격 / 보류 / 폐기)</h2><span class="time">10분</span></div>
+    <p>오너끼리 카드를 바꿔서 검토합니다. (장비 → 좌석 → 예산 → 장비) 아래 5가지를 모두 통과하면 <b>승격</b>, 고칠 게 있으면 <b>보류</b>, 근거가 없으면 <b>폐기</b>입니다.</p>
+    <div class="check" data-id="t2-review">
+      <div class="check-h"><span>카드 검토 기준 (카드 1장 기준)</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">출처에 시트·행·원래 문구가 있다 (시트에서 직접 찾아 확인했다)</label>
+      <label><input type="checkbox">1건만 보고 일반화했다면 신뢰도가 "낮음"이다</label>
+      <label><input type="checkbox">개인 이름 대신 신청번호·좌석코드를 썼다</label>
+      <label><input type="checkbox">"다시 확인할 날"이 있다</label>
+      <label><input type="checkbox">에이전트가 이 카드를 어떻게 써야 하는지(사용 규칙)가 있다</label>
+    </div>
+    <div class="callout amber"><div class="t">승격하면</div><p>검토자 이름을 <b>확인자</b>에 적고 상태를 <b>확정</b>으로 바꿉니다. 시트끼리 다른 내용이라면 상태를 <b>충돌 미해결</b>로 두고 양쪽 근거를 모두 적습니다.</p></div>
+  </section>
+
+  <section class="card" id="t2-4">
+    <div class="sec-h"><div class="num">✓</div><h2>Step 2 정리</h2></div>
+    <table>
+      <tr><th>카드 이름</th><th>종류</th><th>신뢰도</th><th>상태</th><th>작성 / 확인</th></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    <p>팀 문서에 위 표를 만들어 카드 목록을 정리하세요. <b>확정·충돌 미해결 카드만</b> 다음 단계에서 에이전트에 넣습니다. 검토 대기 카드는 넣지 않습니다.</p>
+    <a class="next" href="#t3">Step 3 · 팀 에이전트 만들고 채점하기 →</a>
+  </section>
+</article>
+
+<!-- ===================== T3 ===================== -->
+<article class="lab" id="t3">
+  <div class="hero team">
+    <div class="pills"><span class="pill">Part 2 · Step 3</span><span class="pill ghost">규칙 합의 · 평가 · 개선</span></div>
+    <h1>팀 규칙을 정하고, 정답이 있는 17문제로<br>에이전트를 채점하고 고칩니다</h1>
+    <p>무엇을 AI에게 맡기고 무엇을 사람이 결정할지 합의한 뒤, 정본 지도와 확정 카드를 넣은 <b>팀 에이전트</b>를 만듭니다. 그리고 <b>평가 질문 17개</b>로 채점하고, 틀린 원인을 고쳐 다시 채점합니다.</p>
+    <div class="meta"><span>⏱ 약 35분</span><span>👥 팀 전원</span><span>📊 결과물: 팀 AGENTS.md · 1·2라운드 점수</span></div>
+  </div>
+
+  <section class="card" id="t3-1">
+    <div class="sec-h"><div class="num">1</div><h2>활동 A · 위임 단계 합의</h2><span class="time">8분</span></div>
+    <p>업무마다 AI에게 어디까지 맡길지 정합니다. 판단 기준은 세 가지 질문입니다: <b>틀렸을 때 영향이 큰가? 기계로 검증되나? 되돌릴 수 있나?</b></p>
+    <table>
+      <tr><th>단계</th><th>뜻</th></tr>
+      <tr><td><span class="badge teal">L1 완전 자율</span></td><td>읽기만 하고 검산 가능. 바로 결과를 낸다</td></tr>
+      <tr><td><span class="badge blue">L2 게이트 실행</span></td><td>검산을 통과했을 때만 결과를 낸다</td></tr>
+      <tr><td><span class="badge amber">L3 추천</span></td><td>초안·제안만. 사람이 검토하고 고친다</td></tr>
+      <tr><td><span class="badge red">L4 사람 결정</span></td><td>돈·인사·외부 발송처럼 되돌리기 어려움. 근거만 정리한다</td></tr>
+    </table>
+    <h4>각자 투표 → 다르면 토론 (규칙 지기가 기록)</h4>
+    <table>
+      <tr><th>업무</th><th>내 투표</th><th>팀 결정</th></tr>
+      <tr><td>장비 신청 목록 점검, 위험 등급 분류</td><td>L__</td><td>L__</td></tr>
+      <tr><td>좌석 이동 진척 집계, 특수요청 분류</td><td>L__</td><td>L__</td></tr>
+      <tr><td>예산 집행률 계산</td><td>L__</td><td>L__</td></tr>
+      <tr><td>입사자 안내 메시지 초안</td><td>L__</td><td>L__</td></tr>
+      <tr><td>부서 이동 공지 초안</td><td>L__</td><td>L__</td></tr>
+      <tr><td>좌석 배정안 제안</td><td>L__</td><td>L__</td></tr>
+      <tr><td>결재 상신, 장비 발주, 비용 지급</td><td>L__</td><td>L__</td></tr>
+      <tr><td>Part 1 Step 3 주간 브리핑을 팀 채널로 자동 발송</td><td>L__</td><td>L__</td></tr>
+    </table>
+    <div class="callout"><div class="t">규칙 지기가 할 일</div><p><code>AGENTS_총무팀.md</code>의 <b>4. 위임 단계</b> 표를 팀 결정으로 고치고, 표에 없는 업무는 <b>L3</b>으로 본다는 줄이 있는지 확인합니다. Step 1에서 찾은 정본 판정도 <b>2. 데이터 위치</b> 표에 반영합니다.</p></div>
+  </section>
+
+  <section class="card" id="t3-2">
+    <div class="sec-h"><div class="num">2</div><h2>활동 B · 팀 에이전트 구성</h2><span class="time">5분</span></div>
+    <ol class="steps-list">
+      <li>규칙 지기 화면에서 <b>새 채팅 에이전트</b>를 만듭니다. (Part 1 Step 2 에이전트를 복제해도 됩니다)</li>
+      <li><b>지식(Knowledge)</b>: CSV 3종 + 팀의 <b>확정·충돌 미해결 카드</b> + 팀이 고친 AGENTS 파일</li>
+      <li><b>지침(Instructions)</b>: 아래 내용을 붙여 넣습니다.</li>
+      <li>이름은 <code>총무-팀에이전트-[팀이름]</code>으로 합니다.</li>
+    </ol>
+    <div class="copybox"><div class="label">팀 에이전트 지침<button type="button">복사</button></div><pre>당신은 총무팀의 팀 에이전트입니다. 지식(Knowledge)에 연결된 파일만 근거로 한국어로 답합니다.
+가장 먼저 지식에 있는 AGENTS 파일을 읽고 그 규칙을 따릅니다. 규칙과 아래 내용이 다르면 AGENTS 파일을 따릅니다.
+
+- 정본·사본·작업본·검산 대상 구분은 AGENTS 파일의 '데이터 위치'를 따른다.
+- 지식 카드는 상태가 '확정' 또는 '충돌 미해결'인 것만 근거로 쓴다. '충돌 미해결'은 양쪽을 모두 전달한다.
+- 업무를 요청받으면 AGENTS 파일의 위임 단계를 먼저 밝히고, L3·L4 업무는 초안이나 근거까지만 낸다.
+- 파일에 없으면 "근거 없음", 갈라진 부서 소속은 "확정 불가".
+- 사용자가 기준일을 말하지 않으면 2026-11-23으로 본다.
+- 답변 형식: [기준일] / [한눈 요약] / [근거] / [충돌] / [빈 곳] / [위임 단계 · 다음 행동]</pre></div>
+  </section>
+
+  <section class="card" id="t3-3">
+    <div class="sec-h"><div class="num">3</div><h2>활동 C · 1라운드 채점</h2><span class="time">10분</span></div>
+    <p>평가자가 <code>평가질문_문제지.md</code>의 17문항을 팀 에이전트에게 차례로 묻고, 팀이 함께 채점합니다. 오너가 자기 영역 문항의 정답을 시트에서 직접 확인합니다.</p>
+    <table>
+      <tr><th>채점 기준</th><th>점수</th></tr>
+      <tr><td>숫자·대상이 맞음</td><td>1점</td></tr>
+      <tr><td>근거(시트·행·계산식)까지 맞음</td><td>+1점</td></tr>
+      <tr><td><b>함정 문항(12, 13, 17번)에서 추측함</b></td><td><b>0점</b></td></tr>
+      <tr><td>만점</td><td>34점</td></tr>
+    </table>
+    <div class="callout amber"><div class="t">시간이 부족하면</div><p>영역별로 나눠 동시에 묻습니다. 장비 오너 1~6번, 좌석 오너 7~13번, 예산 오너 14~17번. 같은 에이전트를 각자 화면에서 열어도 됩니다.</p></div>
+    <table>
+      <tr><th>라운드</th><th>A 장비 (12점)</th><th>B 좌석 (14점)</th><th>C 예산 (8점)</th><th>합계 (34점)</th></tr>
+      <tr><td>1라운드</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>2라운드</td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="t3-4">
+    <div class="sec-h"><div class="num">4</div><h2>활동 D · 원인 찾고 고친 뒤 2라운드</h2><span class="time">12분</span></div>
+    <p>틀린 문항마다 원인을 아래 넷 중 하나로 분류하고, 해당하는 곳을 고칩니다.</p>
+    <table>
+      <tr><th>원인</th><th>예</th><th>고칠 곳</th></tr>
+      <tr><td><b>카드 없음 / 카드 틀림</b></td><td>부서가 갈렸다는 걸 몰라서 추측함</td><td>카드 추가·수정 (짝 검토 후 확정)</td></tr>
+      <tr><td><b>규칙 부족</b></td><td>집행률을 한 기준만 말함</td><td>팀 AGENTS 파일에 규칙 한 줄</td></tr>
+      <tr><td><b>시트 문제</b></td><td>REQ-001 좌석이 좌석 시트에 없음</td><td>시트 담당자에게 알릴 목록에 추가 (지금 고치지 않음)</td></tr>
+      <tr><td><b>질문이 모호함</b></td><td>"진척률"의 기준이 둘</td><td>평가 질문 문구 수정</td></tr>
+    </table>
+    <ol class="steps-list">
+      <li>고친 카드·AGENTS 파일을 지식에 <b>다시 올립니다</b>. (이전 파일은 지웁니다)</li>
+      <li><b>틀렸던 문항만</b> 다시 묻고 2라운드 점수를 적습니다.</li>
+    </ol>
+    <div class="check" data-id="t3-done">
+      <div class="check-h"><span>Step 3 결과물 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">팀 AGENTS 파일: 위임 단계 표와 데이터 위치를 팀 결정으로 수정</label>
+      <label><input type="checkbox">팀 에이전트 게시 (지식: CSV 3종 + 확정 카드 + 팀 AGENTS)</label>
+      <label><input type="checkbox">1라운드 점수와 틀린 문항별 원인 기록</label>
+      <label><input type="checkbox">고친 뒤 2라운드 점수 기록</label>
+      <label><input type="checkbox">시트 담당자에게 알릴 데이터 문제 목록 정리</label>
+    </div>
+    <a class="next" href="#t4">Step 4 · 업데이트 루틴 정하기 →</a>
+  </section>
+</article>
+
+<!-- ===================== T4 ===================== -->
+<article class="lab" id="t4">
+  <div class="hero team">
+    <div class="pills"><span class="pill">Part 2 · Step 4</span><span class="pill ghost">운영 합의 · 마무리</span></div>
+    <h1>오늘 만든 것이 다음 달에도 맞으려면,<br>누가 언제 고칠지 정해야 합니다</h1>
+    <p>카드는 만드는 것보다 <b>최신으로 유지하는 게</b> 훨씬 어렵습니다. "시간 날 때 고치기"로는 돌아가지 않으니, 고치는 <b>계기</b>와 <b>담당자</b>를 정하고 마무리합니다.</p>
+    <div class="meta"><span>⏱ 약 10분</span><span>👥 팀 전원</span><span>📄 결과물: 업데이트 루틴 표</span></div>
+  </div>
+
+  <section class="card" id="t4-1">
+    <div class="sec-h"><div class="num">1</div><h2>업데이트 루틴 표 채우기</h2><span class="time">6분</span></div>
+    <table>
+      <tr><th>계기</th><th>예 (이 데이터 기준)</th><th>고칠 곳</th><th>담당</th><th>언제</th></tr>
+      <tr><td><b>① 바뀌는 일이 생겼을 때</b></td><td>조직개편 공식 발표, 사번 발급, 결재상태 변경</td><td>시트 / 부서명 매핑 카드</td><td></td><td>그날 바로</td></tr>
+      <tr><td><b>② 에이전트가 새로 알게 됐을 때</b></td><td>작업 중 모르던 제약 발견 → 카드 초안</td><td>검토 대기 카드</td><td></td><td>주 1회 검토</td></tr>
+      <tr><td><b>③ 확인할 날이 됐을 때</b></td><td>웰컴키트 카드 (2026-12-07)</td><td>기한 지난 카드</td><td></td><td>월 1회</td></tr>
+      <tr><td><b>④ 에이전트가 틀렸을 때</b></td><td>오늘 1라운드에서 틀린 문항</td><td>카드 / 규칙 / 시트 + 평가 질문 추가</td><td></td><td>즉시</td></tr>
+      <tr><td><b>⑤ 월 마감</b></td><td>정산 시트를 전자결재와 대조</td><td>정산 시트, 평가 질문 다시 돌리기</td><td></td><td>매월 말</td></tr>
+    </table>
+    <h4>고칠 때 규칙 3가지</h4>
+    <ul class="clean">
+      <li><b>지우지 말고 "폐기"로 표시.</b> 대신 새 카드 이름을 적어 둡니다.</li>
+      <li><b>변경 이력 남기기.</b> Google Docs/Drive 버전 기록을 씁니다.</li>
+      <li><b>영역마다 담당자 1명.</b> "팀 전체 관리"는 아무도 관리하지 않게 됩니다.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="t4-2">
+    <div class="sec-h"><div class="num">2</div><h2>회고 & 팀별 1분 발표</h2><span class="time">4분</span></div>
+    <h4>회고 질문</h4>
+    <ol class="steps-list">
+      <li>실제 우리 업무에서 <b>"어디가 진짜인지" 불분명한 데이터</b>는 무엇인가요?</li>
+      <li>내일 실제 업무로 카드를 3장만 쓴다면 무엇을 쓰겠습니까?</li>
+      <li>평가 질문은 누가, 얼마나 자주 다시 돌리면 좋을까요?</li>
+    </ol>
+    <h4>1분 발표 형식</h4>
+    <div class="copybox"><div class="label">발표 템플릿<button type="button">복사</button></div><pre>우리 팀 이름:
+점수: 1라운드 __점 → 2라운드 __점
+가장 놀란 발견: (예: 장비 시트 부서명이 개편 전 이름이었다)
+가장 효과 있던 수정: (카드 / 규칙 / 질문)
+실제 업무에서 바로 해 볼 것 1가지:</pre></div>
+    <div class="check" data-id="t4-done">
+      <div class="check-h"><span>Part 2 최종 결과물</span><span class="cnt"></span></div><div class="bar"><i></i></div>
+      <label><input type="checkbox">정본지도 (Step 1)</label>
+      <label><input type="checkbox">확정 지식 카드 4장 이상 (Step 2)</label>
+      <label><input type="checkbox">팀 AGENTS 파일 + 팀 에이전트 (Step 3)</label>
+      <label><input type="checkbox">1·2라운드 점수표와 데이터 문제 목록 (Step 3)</label>
+      <label><input type="checkbox">업데이트 루틴 표 (Step 4)</label>
+    </div>
+    <div class="callout teal"><div class="t">오늘의 한 줄</div><p>에이전트를 믿고 쓰려면 똑똑한 모델보다 <b>진짜 데이터(정본), 시트에 없는 맥락(카드), 맡길 선(규칙), 맞는지 확인하는 질문(평가), 고치는 약속(루틴)</b>이 필요합니다.</p></div>
+  </section>
+</article>
+
+<!-- ===================== GUIDE ===================== -->
+<article class="lab" id="guide">
+  <div class="hero team">
+    <div class="pills"><span class="pill">진행자 가이드</span><span class="pill ghost">참가자에게는 마지막에 공개</span></div>
+    <h1>진행자용 시간표 · 정답 · 진행 팁</h1>
+    <p>Part 2를 진행하는 분을 위한 페이지입니다. 정답지와 완성 예시는 <b>활동이 끝난 뒤</b> 공유하세요.</p>
+  </div>
+
+  <section class="card" id="g-1">
+    <div class="sec-h"><div class="num">1</div><h2>시간표와 자료</h2></div>
+    <table>
+      <tr><th>시간</th><th>활동</th><th>진행자 체크</th></tr>
+      <tr><td>0~3분</td><td>Step 1-0 팀·역할 구성</td><td>팀당 공용 문서 하나 만들었는지</td></tr>
+      <tr><td>3~20분</td><td>Step 1 워밍업 → 정본 판정 → 문제 찾기</td><td>"작업본"과 "검산 대상"을 헷갈리면 정산 시트로 설명</td></tr>
+      <tr><td>20~45분</td><td>Step 2 카드 초안 → 짝 검토</td><td>1건 일반화 카드의 신뢰도를 "낮음"으로 두는지</td></tr>
+      <tr><td>45~80분</td><td>Step 3 규칙 합의 → 팀 에이전트 → 1·2라운드</td><td>함정 문항 3개 채점을 엄격하게</td></tr>
+      <tr><td>80~90분</td><td>Step 4 루틴 → 발표</td><td>담당자 칸이 "팀 전체"로 비어 있지 않은지</td></tr>
+    </table>
+    <table>
+      <tr><th>자료</th><th>내려받기</th></tr>
+      <tr><td>평가 질문 정답지 (17문항, 근거 포함)</td><td><a class="dl" href="files/facilitator/평가질문_정답지.md" download>⬇ 정답지</a></td></tr>
+      <tr><td>완성 예시 폴더 (정본지도, 카드 10장, AGENTS, 업데이트 루틴, 평가)</td><td><a class="dl" href="files/facilitator/총무-second-brain_예시.zip" download>⬇ ZIP</a></td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="g-2">
+    <div class="sec-h"><div class="num">2</div><h2>핵심 정답</h2></div>
+    <table>
+      <tr><th>항목</th><th>정답</th></tr>
+      <tr><td>장비 위험 (기준일 2026-11-23)</td><td>긴급 REQ-003 (D-8) / 주의 REQ-007 · 009 · 011 · 013</td></tr>
+      <tr><td>지급상태</td><td>지급대기 7 · 지급완료 3 · 승인대기 3 · 재고확인중 2</td></tr>
+      <tr><td>미지급 27인치 모니터</td><td>5대 + 재고 충돌(예비 10세트 vs 재고 부족) 둘 다</td></tr>
+      <tr><td>좌석 진척</td><td>이동 대상 10석 중 2석 = 20% (전체 기준 7/15 = 46.7%와 구분)</td></tr>
+      <tr><td>집행률</td><td>장부 96.5% / 지급 75.8%, 품의진행 4건 18,250,000원, 결재완료 3건 17,650,000원</td></tr>
+      <tr><td>함정 12 · 13 · 17번</td><td>REQ-001 소속 "확정 불가" · REQ-001 좌석 "근거 없음" · 12월 사옥관리비 "근거 없음"</td></tr>
+    </table>
+  </section>
+
+  <section class="card" id="g-3">
+    <div class="sec-h"><div class="num">3</div><h2>진행 팁</h2></div>
+    <ul class="clean">
+      <li><b>점수 경쟁보다 원인 찾기.</b> 2라운드에서 오른 점수의 이유(카드 / 규칙 / 질문)를 말하게 하세요.</li>
+      <li><b>함정 문항을 맞히는 팀이 적어도 괜찮습니다.</b> "모른다고 말하게 만드는 것"이 오늘의 핵심이라는 걸 마지막에 짚어 주세요.</li>
+      <li><b>시트를 고치려 하면 멈춰 주세요.</b> 실제 업무에서는 정본 담당자가 고칩니다. 오늘은 "알릴 목록"으로만 남깁니다.</li>
+      <li><b>실제 데이터 금지.</b> 실습 중 실제 사내 데이터나 개인정보를 올리지 않도록 처음과 Step 2 시작 때 한 번 더 안내하세요.</li>
+      <li>메뉴 이름은 조직의 Gemini Enterprise 설정에 따라 다를 수 있습니다. 사전에 진행자 계정으로 한 번 따라가 보세요.</li>
+    </ul>
+  </section>
+</article>
+
+</main>
+<footer><div class="wrap">총무 AI LAB · Part 2 팀 실습 · 실습 데이터는 모두 가상입니다. 체크 표시는 이 브라우저에만 저장됩니다.</div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
