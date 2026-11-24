@@ -140,3 +140,6 @@ td:has(.dl){white-space:nowrap;width:1%}
 /* team hero: second pill (teal background) -> gray text for readability */
 .hero.team .pill.ghost{color:#334155;border:0}
 td.vote{color:var(--faint);white-space:nowrap;letter-spacing:.02em}
+
+/* inline code inside dark hero: keep text black on light chip */
+.hero code{color:#111827;background:#f1f5f9}
