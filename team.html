@@ -42,14 +42,43 @@
   <section class="card" id="t1-0">
     <div class="sec-h"><div class="num">0</div><h2>팀 구성 및 준비</h2><span class="time">3분</span></div>
     <div class="callout teal"><div class="t">🧠 Second Brain이 뭔가요?</div><p>사람과 AI가 같이 보는 <b>팀의 공용 기억</b>입니다. 시트 같은 데이터 자체가 아니라, <b>"어느 데이터가 진짜인가(정본), 시트에 안 적힌 사정은 무엇인가(지식 카드), 어떻게 판단해야 하나(규칙)"</b>를 정리해 둔 것입니다. 오늘 Part 2 전체가 이걸 만드는 과정입니다.</p></div>
-    <h4>역할 나누기</h4>
+    <h4>역할 나누기: 에이전트를 운영할 때 필요한 5가지 역할</h4>
+    <p>시트별로 나누지 않고, <b>Second Brain의 어느 부분을 책임지는지</b>로 나눕니다. 실습이 끝난 뒤 실제 업무에서도 같은 역할로 이어 갈 수 있어요.</p>
     <table>
-      <tr><th>역할</th><th>하는 일</th><th>맡을 데이터</th></tr>
-      <tr><td><b>장비 오너</b></td><td>장비 시트의 정본 판정, 장비 카드 작성</td><td>실습1 장비신청</td></tr>
-      <tr><td><b>좌석 오너</b></td><td>좌석 시트의 정본 판정, 좌석 카드 작성</td><td>실습2 좌석배치</td></tr>
-      <tr><td><b>예산 오너</b></td><td>정산 시트의 정본 판정, 예산 카드 작성</td><td>실습3 예산정산</td></tr>
-      <tr><td><b>규칙 지기</b></td><td>팀 AGENTS.md 정리, 팀 에이전트 화면 조작</td><td>AGENTS_총무팀.md</td></tr>
-      <tr><td><b>평가자</b></td><td>시간 관리, 채점, 기록 (4명 팀이면 규칙 지기가 겸임)</td><td>평가질문 문제지</td></tr>
+      <tr><th>역할</th><th>책임지는 것</th><th>실습에서 하는 일</th><th>실제 업무에서는</th></tr>
+      <tr><td><span class="badge">정본 담당자</span></td><td>데이터의 "진짜 값"</td><td>정본지도, 공통 키, 시트 문제 목록 정리, 채점 때 정답을 시트에서 확인</td><td>시트·시스템 주인 (장비·공간·예산 담당, 인사팀)</td></tr>
+      <tr><td><span class="badge teal">암묵지 담당자</span></td><td>시트에 안 적힌 사정</td><td>지식 카드 초안 (숨은 제약·의존성·용어·결정 이유)</td><td>그 업무를 오래 해 온 실무자</td></tr>
+      <tr><td><span class="badge blue">가이드문서 담당자</span></td><td>AI가 따를 규칙</td><td>AGENTS 파일, 위임 단계(L1~L4) 기록, 팀 프로젝트 만들기·지침</td><td>팀 리드 또는 AI 챔피언</td></tr>
+      <tr><td><span class="badge amber">검토 담당자</span></td><td>카드가 맞는지</td><td>카드 짝 검토(승격·보류·폐기), 확인자 서명</td><td>작성자가 아닌 다른 사람</td></tr>
+      <tr><td><span class="badge red">평가 담당자</span></td><td>AI가 제대로 답하는지</td><td>시간 관리, 평가 질문 채점·기록, 틀린 원인 분류</td><td>정기 점검 담당 (월 1회 등)</td></tr>
+    </table>
+    <div class="grid2">
+      <div class="tile"><h4>원칙 1 · 작성자와 검토자는 다른 사람</h4><p>암묵지 담당자가 쓴 카드는 검토 담당자가, 가이드문서 담당자가 쓴 규칙은 평가 담당자가 확인합니다.</p></div>
+      <div class="tile"><h4>원칙 2 · 산출물마다 주인은 1명</h4><p>"팀 전체가 관리"하면 아무도 관리하지 않게 됩니다. 정본지도·카드·규칙·평가 질문마다 주인을 정합니다.</p></div>
+    </div>
+    <table>
+      <tr><th>팀 인원</th><th>배정</th></tr>
+      <tr><td>5명</td><td>정본 1 · 암묵지 1 · 가이드문서 1 · 검토 1 · 평가 1</td></tr>
+      <tr><td>4명</td><td>정본 1 · 암묵지 1 · 가이드문서 1 · <b>검토+평가 1</b></td></tr>
+      <tr><td>3명</td><td><b>정본+검토 1</b> · 암묵지 1 · <b>가이드문서+평가 1</b> (작성자와 검토자만 겹치지 않게)</td></tr>
+    </table>
+    <h4>산출물별: 누가 만들고, 누가 확인하나</h4>
+    <table>
+      <tr><th>산출물</th><th>만드는 사람</th><th>확인하는 사람</th><th>고치는 계기</th></tr>
+      <tr><td>정본지도</td><td>정본 담당자</td><td>가이드문서 담당자</td><td>시스템·시트가 바뀔 때</td></tr>
+      <tr><td>지식 카드</td><td>암묵지 담당자</td><td>검토 담당자</td><td>새로 알게 됐을 때, 확인할 날이 됐을 때</td></tr>
+      <tr><td>AGENTS 파일 (규칙)</td><td>가이드문서 담당자</td><td>평가 담당자</td><td>채점에서 규칙 부족이 드러날 때</td></tr>
+      <tr><td>평가 질문</td><td>평가 담당자</td><td>가이드문서 담당자</td><td>에이전트가 틀렸을 때 (같은 유형 추가)</td></tr>
+      <tr><td>시트 문제 목록</td><td>정본 담당자</td><td>실제 시트 주인에게 전달</td><td>문제 찾기·채점 결과</td></tr>
+    </table>
+    <div class="callout amber"><div class="t">11/25 현장(80분)에서는</div><p>카드 작성(Step 2)을 빼고 진행하므로, 현장에서는 <b>역할만 정하고</b> 각자 맡은 Step에서 주인공을 맡습니다. 암묵지·검토 담당자는 Step 3에서 미리 만든 카드 3장을 훑어보고 "확정해도 되는지" 한마디씩 의견을 줍니다. 이후 과정(카드 작성, 업데이트 루틴)은 이 역할 그대로 이어 갑니다.</p></div>
+    <h4>단계별 주인공</h4>
+    <table>
+      <tr><th>단계</th><th>주인공</th><th>함께 하는 역할</th></tr>
+      <tr><td>Step 1 정본 지도</td><td>정본 담당자</td><td>모두 문제 찾기에 참여</td></tr>
+      <tr><td>Step 2 지식 카드</td><td>암묵지 담당자 (초안) → 검토 담당자 (승격)</td><td>정본 담당자가 출처가 시트와 맞는지 확인</td></tr>
+      <tr><td>Step 3 규칙·채점</td><td>가이드문서 담당자 (규칙·팀 프로젝트) → 평가 담당자 (채점)</td><td>틀린 원인별로 해당 담당자가 고침</td></tr>
+      <tr><td>Step 4 업데이트 루틴</td><td>모두</td><td>각자 "내가 언제 무엇을 고칠지"를 자기 역할로 적음</td></tr>
     </table>
     <table>
       <tr><th>파일</th><th>쓰는 곳</th><th>내려받기</th></tr>
@@ -64,7 +93,7 @@
 
   <section class="card" id="t1-1">
     <div class="sec-h"><div class="num">1</div><h2>워밍업: 우리 에이전트들은 왜 다르게 답했나</h2><span class="time">4분</span></div>
-    <p>Part 1 Step 2에서 각자 만든 프로젝트에 <b>같은 질문 4개</b>(테스트 ①~④)를 던졌습니다. 팀원이 한 명씩 돌아가며 <b>"내 AI는 몇 번을 맞혔고 몇 번을 틀렸는지"</b> 말하고, 평가자가 아래 표에 인원수를 적습니다.</p>
+    <p>Part 1 Step 2에서 각자 만든 프로젝트에 <b>같은 질문 4개</b>(테스트 ①~④)를 던졌습니다. 팀원이 한 명씩 돌아가며 <b>"내 AI는 몇 번을 맞혔고 몇 번을 틀렸는지"</b> 말하고, 평가 담당자가 아래 표에 인원수를 적습니다.</p>
     <ul class="clean">
       <li>정답 기준은 Part 1 Step 2 페이지의 "확인 포인트"입니다. (예: ②번은 "확정 불가"라고 답해야 정답)</li>
       <li>틀린 사람이 있다면 그 사람의 AI가 <b>어떻게 답했는지</b>도 짧게 말해 주세요. 다음 활동에서 원인을 찾는 재료가 됩니다.</li>
@@ -89,7 +118,7 @@
 
   <section class="card" id="t1-2">
     <div class="sec-h"><div class="num">2</div><h2>활동 A · 정본 판정</h2><span class="time">6분</span></div>
-    <p>오너마다 자기 시트를 보고 <code>정본지도_템플릿.md</code>의 <b>"1. 데이터별 정본"</b> 표를 채웁니다. 시트의 각 정보가 아래 넷 중 무엇인지 정합니다.</p>
+    <p><b>정본 담당자</b>가 중심이 되어 시트 3개를 보고 <code>정본지도_템플릿.md</code>의 <b>"1. 데이터별 정본"</b> 표를 채웁니다. 시트의 각 정보가 아래 넷 중 무엇인지 정합니다.</p>
     <table>
       <tr><th>판정</th><th>뜻</th><th>예</th></tr>
       <tr><td><span class="badge teal">정본</span></td><td>이 값이 처음 만들어지고, 틀리면 여기를 고친다</td><td>장비 지급상태</td></tr>
@@ -152,7 +181,7 @@
     <div class="pills"><span class="pill">Part 2 · Step 2</span><span class="pill ghost">AI 초안 + 사람 검토</span></div>
     <h1>시트에 안 적힌 사정을 카드로 남기고,<br>서로 검토해서 "확정"합니다</h1>
     <p>"보안구역은 출입 권한도 같이", "웰컴키트 품의가 늦으면 딜리버리하지 못함" 같은 지식은 담당자 머릿속에만 있습니다. AI로 카드 초안을 빠르게 만들고, <b>사람이 검토해서 확정한 카드만</b> 에이전트가 근거로 쓰게 합니다.</p>
-    <div class="meta"><span>⏱ 약 25분</span><span>👥 오너 3명 작성 + 짝 검토</span><span>📄 결과물: 확정 카드 4장 이상</span></div>
+    <div class="meta"><span>⏱ 약 25분</span><span>👥 암묵지 담당자 작성 + 검토 담당자 확인</span><span>📄 결과물: 확정 카드 4장 이상</span></div>
   </div>
 
   <section class="card" id="t2-1">
@@ -187,7 +216,7 @@
   </section>
 
   <section class="card" id="t2-2">
-    <div class="sec-h"><div class="num">2</div><h2>활동 A · 오너별 카드 초안 2장</h2><span class="time">10분</span></div>
+    <div class="sec-h"><div class="num">2</div><h2>활동 A · 암묵지 담당자의 카드 초안</h2><span class="time">10분</span></div>
     <ol class="steps-list">
       <li>자기 시트 CSV와 <code>카드_템플릿.md</code>를 AI 채팅에 첨부합니다.</li>
       <li>아래 프롬프트에서 <b>[내 영역]</b>만 바꿔 보냅니다.</li>
@@ -211,7 +240,7 @@
 
   <section class="card" id="t2-3">
     <div class="sec-h"><div class="num">3</div><h2>활동 B · 짝 검토 (승격 / 보류 / 폐기)</h2><span class="time">10분</span></div>
-    <p>오너끼리 카드를 바꿔서 검토합니다. (장비 → 좌석 → 예산 → 장비) 아래 5가지를 모두 통과하면 <b>승격</b>, 고칠 게 있으면 <b>보류</b>, 근거가 없으면 <b>폐기</b>입니다.</p>
+    <p><b>검토 담당자</b>가 암묵지 담당자의 카드를 검토합니다. 출처가 시트와 맞는지는 <b>정본 담당자</b>가 함께 확인합니다. 아래 5가지를 모두 통과하면 <b>승격</b>, 고칠 게 있으면 <b>보류</b>, 근거가 없으면 <b>폐기</b>입니다.</p>
     <div class="check" data-id="t2-review">
       <div class="check-h"><span>카드 검토 기준 (카드 1장 기준)</span><span class="cnt"></span></div><div class="bar"><i></i></div>
       <label><input type="checkbox">출처에 시트·행·원래 문구가 있다 (시트에서 직접 찾아 확인했다)</label>
@@ -237,9 +266,9 @@
     </table>
     <div class="copybox"><div class="label">팀 문서에 붙여 넣을 양식 (예시 3줄 포함)<button type="button">복사</button></div><pre>| 카드 이름 | 종류 | 신뢰도 | 상태 | 작성 / 확인 |
 |---|---|---|---|---|
-| 인사 연동이 끝나야 장비 지급 (REQ-003·007·011·013) | 의존성 | 중간 | 확정 | 장비 오너 / 좌석 오너 |
-| 8층 A구역 보안구역은 출입 권한 연동 필수 (PA-8F-A04) | 숨은 제약 | 낮음 | 보류 | 좌석 오너 / 예산 오너 |
-| "집행금액"에는 품의진행 금액도 포함 | 용어 | 중간 | 확정 | 예산 오너 / 장비 오너 |
+| 인사 연동이 끝나야 장비 지급 (REQ-003·007·011·013) | 의존성 | 중간 | 확정 | 암묵지 담당 / 검토 담당 |
+| 8층 A구역 보안구역은 출입 권한 연동 필수 (PA-8F-A04) | 숨은 제약 | 낮음 | 보류 | 암묵지 담당 / 검토 담당 |
+| "집행금액"에는 품의진행 금액도 포함 | 용어 | 중간 | 확정 | 암묵지 담당 / 검토 담당 |
 |  |  |  |  |  |</pre></div>
     <p><b>확정·충돌 미해결 카드만</b> 다음 단계(Step 3)에서 팀 프로젝트 파일로 올립니다. <b>검토 대기·보류·폐기</b> 카드는 올리지 않습니다. 위 예시라면 1번과 3번 카드만 올라갑니다.</p>
     <a class="next" href="#t3">Step 3 · 팀 에이전트 만들고 채점하기 →</a>
@@ -265,7 +294,7 @@
       <tr><td><span class="badge amber">L3 추천</span></td><td>초안·제안만. 사람이 검토하고 고친다</td></tr>
       <tr><td><span class="badge red">L4 사람 결정</span></td><td>돈·인사·외부 발송처럼 되돌리기 어려움. 근거만 정리한다</td></tr>
     </table>
-    <h4>각자 투표 → 다르면 토론 (규칙 지기가 기록)</h4>
+    <h4>각자 투표 → 다르면 토론 (가이드문서 담당자가 기록)</h4>
     <p>아래 8개는 오늘 실습에서 실제로 다룬 업무입니다. 업무마다 <b>L1~L4 중 하나</b>를 골라 "내 투표" 칸에 적고, 팀원끼리 다르면 토론해서 "팀 결정"을 정합니다. 표는 팀 공용 문서에 옮겨 적어도 됩니다.</p>
     <table>
       <tr><th>업무 (오늘 실습에서 한 일)</th><th>내 투표 (하나 고르기)</th><th>팀 결정</th></tr>
@@ -278,12 +307,12 @@
       <tr><td>결재 상신, 장비 발주, 비용 지급</td><td class="vote">L1 · L2 · L3 · L4</td><td class="vote">( &nbsp; &nbsp; )</td></tr>
       <tr><td>Part 1 Step 3 주간 브리핑을 팀 채널로 자동 발송</td><td class="vote">L1 · L2 · L3 · L4</td><td class="vote">( &nbsp; &nbsp; )</td></tr>
     </table>
-    <div class="callout"><div class="t">규칙 지기가 할 일</div><p><code>AGENTS_총무팀.md</code>의 <b>4. 위임 단계</b> 표를 팀 결정으로 고치고, 표에 없는 업무는 <b>L3</b>으로 본다는 줄이 있는지 확인합니다. Step 1에서 찾은 정본 판정도 <b>2. 데이터 위치</b> 표에 반영합니다.</p></div>
+    <div class="callout"><div class="t">가이드문서 담당자가 할 일</div><p><code>AGENTS_총무팀.md</code>의 <b>4. 위임 단계</b> 표를 팀 결정으로 고치고, 표에 없는 업무는 <b>L3</b>으로 본다는 줄이 있는지 확인합니다. Step 1에서 찾은 정본 판정도 <b>2. 데이터 위치</b> 표에 반영합니다.</p></div>
   </section>
 
   <section class="card" id="t3-2">
     <div class="sec-h"><div class="num">2</div><h2>활동 B · 팀 에이전트 구성</h2><span class="time">5분</span></div>
-    <p>규칙 지기 화면에서 <b>팀 프로젝트</b>를 새로 만들고 팀원에게 공유합니다. 이름은 <code>총무-팀에이전트-[팀이름]</code>으로 합니다.</p>
+    <p><b>가이드문서 담당자</b> 화면에서 <b>팀 프로젝트</b>를 새로 만들고 팀원에게 공유합니다. 이름은 <code>총무-팀에이전트-[팀이름]</code>으로 합니다.</p>
     <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
       <ol>
         <li><b>Projects → ＋ New Project</b>, 공개 범위는 <b>조직과 공유</b>(share with your organization)를 고릅니다.</li>
@@ -309,12 +338,13 @@
 - 파일에 없으면 "근거 없음", 갈라진 부서 소속은 "확정 불가".
 - 사용자가 기준일을 말하지 않으면 2026-11-23으로 본다.
 - 답변 형식: [기준일] / [한눈 요약] / [근거] / [충돌] / [빈 곳] / [위임 단계 · 다음 행동]</pre></div>
-    <div class="callout teal"><div class="t">💡 진행자 시연: AGENTS.md를 바로 읽는 Codex</div><p>Codex는 폴더에 있는 <code>AGENTS.md</code>를 스스로 읽고 따릅니다. 진행자가 팀 폴더(CSV + 확정 카드 + AGENTS.md)를 Codex로 열고, 규칙 한 줄을 고칠 때마다 답이 어떻게 바뀌는지 보여 주면 "규칙 파일이 왜 중요한지"가 바로 전달됩니다.</p></div>
+    <div class="callout teal" data-tool="claude"><div class="t">💡 진행자 시연: 규칙 파일을 바로 읽는 Claude Code</div><p>Claude Code는 폴더에 있는 <code>CLAUDE.md</code>를 스스로 읽고 따릅니다. 팀 폴더(CSV + 확정 카드 + <code>AGENTS_총무팀.md</code>)에 <code>CLAUDE.md</code> 파일을 만들고 첫 줄에 <code>@AGENTS_총무팀.md</code>라고 적어 두면, 규칙 파일을 따로 붙여 넣지 않아도 바로 적용됩니다. 규칙 한 줄을 고칠 때마다 같은 질문의 답이 어떻게 바뀌는지 보여 주면 "규칙 파일이 왜 중요한지"가 바로 전달됩니다.</p></div>
+    <div class="callout teal" data-tool="chatgpt"><div class="t">💡 진행자 시연: AGENTS.md를 바로 읽는 Codex</div><p>Codex는 폴더에 있는 <code>AGENTS.md</code>를 스스로 읽고 따릅니다. 팀 폴더(CSV + 확정 카드)에 규칙 파일을 <code>AGENTS.md</code>라는 이름으로 넣고 Codex로 열면, 규칙 파일을 따로 붙여 넣지 않아도 바로 적용됩니다. 규칙 한 줄을 고칠 때마다 같은 질문의 답이 어떻게 바뀌는지 보여 주면 "규칙 파일이 왜 중요한지"가 바로 전달됩니다.</p></div>
   </section>
 
   <section class="card" id="t3-3">
     <div class="sec-h"><div class="num">3</div><h2>활동 C · 1라운드 채점</h2><span class="time">10분</span></div>
-    <p>평가자가 <code>평가질문_문제지.md</code>의 17문항을 팀 에이전트에게 차례로 묻고, 팀이 함께 채점합니다. 오너가 자기 영역 문항의 정답을 시트에서 직접 확인합니다.</p>
+    <p><b>평가 담당자</b>가 <code>평가질문_문제지.md</code>의 17문항을 팀 에이전트에게 차례로 묻고, 팀이 함께 채점합니다. <b>정본 담당자</b>가 문항의 정답을 시트에서 직접 확인합니다.</p>
     <table>
       <tr><th>채점 기준</th><th>점수</th></tr>
       <tr><td>숫자·대상이 맞음</td><td>1점</td></tr>
@@ -322,7 +352,7 @@
       <tr><td><b>함정 문항(12, 13, 17번)에서 추측함</b></td><td><b>0점</b></td></tr>
       <tr><td>만점</td><td>34점</td></tr>
     </table>
-    <div class="callout amber"><div class="t">시간이 부족하면</div><p>영역별로 나눠 동시에 묻습니다. 장비 오너 1~6번, 좌석 오너 7~13번, 예산 오너 14~17번. 같은 에이전트를 각자 화면에서 열어도 됩니다.</p></div>
+    <div class="callout amber"><div class="t">시간이 부족하면</div><p>세 명이 나눠 동시에 묻습니다. 평가 담당자 1~6번, 정본 담당자 7~13번, 가이드문서 담당자 14~17번. 같은 팀 프로젝트를 각자 화면에서 열면 됩니다.</p></div>
     <table>
       <tr><th>라운드</th><th>A 장비 (12점)</th><th>B 좌석 (14점)</th><th>C 예산 (8점)</th><th>합계 (34점)</th></tr>
       <tr><td>1라운드</td><td></td><td></td><td></td><td></td></tr>
@@ -334,23 +364,38 @@
     <div class="sec-h"><div class="num">4</div><h2>활동 D · 원인 찾고 고친 뒤 2라운드</h2><span class="time">12분</span></div>
     <p>틀린 문항마다 원인을 아래 넷 중 하나로 분류하고, 해당하는 곳을 고칩니다.</p>
     <table>
-      <tr><th>원인</th><th>예</th><th>고칠 곳</th></tr>
-      <tr><td><b>카드 없음 / 카드 틀림</b></td><td>부서가 갈렸다는 걸 몰라서 추측함</td><td>카드 추가·수정 (짝 검토 후 확정)</td></tr>
-      <tr><td><b>규칙 부족</b></td><td>집행률을 한 기준만 말함</td><td>팀 AGENTS 파일에 규칙 한 줄</td></tr>
-      <tr><td><b>시트 문제</b></td><td>REQ-001 좌석이 좌석 시트에 없음</td><td>시트 담당자에게 알릴 목록에 추가 (지금 고치지 않음)</td></tr>
-      <tr><td><b>질문이 모호함</b></td><td>"진척률"의 기준이 둘</td><td>평가 질문 문구 수정</td></tr>
+      <tr><th>원인</th><th>예</th><th>고칠 곳</th><th>고칠 사람</th></tr>
+      <tr><td><b>카드 없음 / 카드 틀림</b></td><td>부서가 갈렸다는 걸 몰라서 추측함</td><td>카드 추가·수정 (짝 검토 후 확정)</td><td>암묵지 → 검토 담당자</td></tr>
+      <tr><td><b>규칙 부족</b></td><td>집행률을 한 기준만 말함</td><td>팀 AGENTS 파일에 규칙 한 줄</td><td>가이드문서 담당자</td></tr>
+      <tr><td><b>시트 문제</b></td><td>REQ-001 좌석이 좌석 시트에 없음</td><td>시트 담당자에게 알릴 목록에 추가 (지금 고치지 않음)</td><td>정본 담당자</td></tr>
+      <tr><td><b>질문이 모호함</b></td><td>"진척률"의 기준이 둘</td><td>평가 질문 문구 수정</td><td>평가 담당자</td></tr>
     </table>
     <ol class="steps-list">
       <li>고친 카드·AGENTS 파일을 프로젝트 파일에 <b>다시 올립니다</b>. (이전 파일은 지웁니다)</li>
       <li><b>틀렸던 문항만</b> 다시 묻고 2라운드 점수를 적습니다.</li>
     </ol>
+    <h4>"시트 담당자에게 알릴 목록"이란?</h4>
+    <p><b>시트 담당자</b>는 그 시트의 값을 실제로 입력하고 고치는 사람(정본 소유자)입니다. 정본지도 "1. 데이터별 정본" 표의 <b>소유자</b> 칸에 적은 사람이에요. 실습에서는 팀의 <b>정본 담당자</b>가 이 목록을 정리하고, 실제 업무에서는 시트 주인에게 전달합니다.</p>
+    <table>
+      <tr><th>문제가 난 곳</th><th>알릴 사람 (실제 업무 기준 예)</th></tr>
+      <tr><td>장비 신청 시트</td><td>총무 장비 담당</td></tr>
+      <tr><td>좌석 배치 시트</td><td>총무 공간 담당</td></tr>
+      <tr><td>예산 정산 시트</td><td>총무 예산 담당 (원래 값은 전자결재)</td></tr>
+      <tr><td>인사 연동·사번처럼 다른 시스템을 옮겨 적은 값</td><td>그 시스템의 담당 부서 (예: 인사팀)</td></tr>
+    </table>
+    <p>팀이 시트를 직접 고치지 않는 이유는, 진짜 값은 담당자만 확정할 수 있기 때문입니다. 팀은 <b>무엇이 이상한지 근거와 함께 넘기고</b>, 담당자가 고친 뒤 카드나 규칙을 갱신합니다.</p>
+    <div class="copybox"><div class="label">팀 문서에 붙여 넣을 양식<button type="button">복사</button></div><pre>| 시트 | 행 (신청번호·좌석코드·정산월+항목) | 무엇이 이상한가 | 근거 | 알릴 사람 | 상태 |
+|---|---|---|---|---|---|
+| 좌석 배치 | (REQ-2026-001 관련) | 비고에 "5층 좌석 사전 배치 완료"인데 좌석 시트에 해당 좌석이 없음 | 장비 REQ-2026-001 비고 | 총무 공간 담당 | 전달 전 |
+| 장비 신청 / 예산 정산 | REQ-2026-009 / 2026-10 IT장비 | 모니터 재고 기록이 서로 다름 (예비 10세트 vs 재고 부족) | 두 시트 비고 | 총무 장비 담당 | 전달 전 |
+|  |  |  |  |  |  |</pre></div>
     <div class="check" data-id="t3-done">
       <div class="check-h"><span>Step 3 결과물 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
       <label><input type="checkbox">팀 AGENTS 파일: 위임 단계 표와 데이터 위치를 팀 결정으로 수정</label>
       <label><input type="checkbox">팀 프로젝트 공유 (파일: CSV 3종 + 확정 카드 + 팀 AGENTS)</label>
       <label><input type="checkbox">1라운드 점수와 틀린 문항별 원인 기록</label>
       <label><input type="checkbox">고친 뒤 2라운드 점수 기록</label>
-      <label><input type="checkbox">시트 담당자에게 알릴 데이터 문제 목록 정리</label>
+      <label><input type="checkbox">시트 담당자(정본 소유자)에게 알릴 데이터 문제 목록 정리 (위 양식)</label>
     </div>
     <a class="next" href="#t4">Step 4 · 업데이트 루틴 정하기 →</a>
   </section>
@@ -368,18 +413,18 @@
   <section class="card" id="t4-1">
     <div class="sec-h"><div class="num">1</div><h2>업데이트 루틴 표 채우기</h2><span class="time">6분</span></div>
     <table>
-      <tr><th>계기</th><th>예 (이 데이터 기준)</th><th>고칠 곳</th><th>담당</th><th>언제</th></tr>
-      <tr><td><b>① 바뀌는 일이 생겼을 때</b></td><td>조직개편 공식 발표, 사번 발급, 결재상태 변경</td><td>시트 / 부서명 매핑 카드</td><td></td><td>그날 바로</td></tr>
-      <tr><td><b>② 에이전트가 새로 알게 됐을 때</b></td><td>작업 중 모르던 제약 발견 → 카드 초안</td><td>검토 대기 카드</td><td></td><td>주 1회 검토</td></tr>
-      <tr><td><b>③ 확인할 날이 됐을 때</b></td><td>웰컴키트 카드 (2026-12-07)</td><td>기한 지난 카드</td><td></td><td>월 1회</td></tr>
-      <tr><td><b>④ 에이전트가 틀렸을 때</b></td><td>오늘 1라운드에서 틀린 문항</td><td>카드 / 규칙 / 시트 + 평가 질문 추가</td><td></td><td>즉시</td></tr>
-      <tr><td><b>⑤ 월 마감</b></td><td>정산 시트를 전자결재와 대조</td><td>정산 시트, 평가 질문 다시 돌리기</td><td></td><td>매월 말</td></tr>
+      <tr><th>계기</th><th>예 (이 데이터 기준)</th><th>고칠 곳</th><th>담당 (예시, 팀에서 이름으로 바꾸기)</th><th>언제</th></tr>
+      <tr><td><b>① 바뀌는 일이 생겼을 때</b></td><td>조직개편 공식 발표, 사번 발급, 결재상태 변경</td><td>시트 / 부서명 매핑 카드</td><td>정본 담당자 (+ 암묵지 담당자)</td><td>그날 바로</td></tr>
+      <tr><td><b>② 에이전트가 새로 알게 됐을 때</b></td><td>작업 중 모르던 제약 발견 → 카드 초안</td><td>검토 대기 카드</td><td>검토 담당자</td><td>주 1회 검토</td></tr>
+      <tr><td><b>③ 확인할 날이 됐을 때</b></td><td>웰컴키트 카드 (2026-12-07)</td><td>기한 지난 카드</td><td>암묵지 담당자</td><td>월 1회</td></tr>
+      <tr><td><b>④ 에이전트가 틀렸을 때</b></td><td>오늘 1라운드에서 틀린 문항</td><td>카드 / 규칙 / 시트 + 평가 질문 추가</td><td>평가 담당자가 원인 분류 → 해당 담당자</td><td>즉시</td></tr>
+      <tr><td><b>⑤ 월 마감</b></td><td>정산 시트를 전자결재와 대조</td><td>정산 시트, 평가 질문 다시 돌리기</td><td>정본 담당자 · 평가 담당자</td><td>매월 말</td></tr>
     </table>
     <h4>고칠 때 규칙 3가지</h4>
     <ul class="clean">
       <li><b>지우지 말고 "폐기"로 표시.</b> 대신 새 카드 이름을 적어 둡니다.</li>
       <li><b>변경 이력 남기기.</b> Google Docs/Drive 버전 기록을 씁니다.</li>
-      <li><b>영역마다 담당자 1명.</b> "팀 전체 관리"는 아무도 관리하지 않게 됩니다.</li>
+      <li><b>산출물마다 주인 1명.</b> 담당 칸에는 역할 이름 대신 실제 사람 이름을 적어 마무리합니다. "팀 전체 관리"는 아무도 관리하지 않게 됩니다.</li>
     </ul>
   </section>
 
@@ -422,7 +467,7 @@
     <div class="callout teal"><div class="t">📅 현장 실습: 11/25(수) 10:30~11:50 · 카카오아지트 (80분 압축 진행)</div><p>Part 2는 현장에서 <b>35분</b>만 씁니다. 카드 작성(Step 2)은 생략하고, 미리 만든 카드 3장(Part 1 Step 2와 같은 파일)을 팀 프로젝트에 넣어 채점까지 경험하게 합니다. Step 2·4와 2라운드 채점은 이후 자율 과제로 안내하세요.</p></div>
     <table>
       <tr><th>시간</th><th>활동</th><th>진행자 체크</th></tr>
-      <tr><td>11:10 ~ 11:20</td><td>팀·역할 구성 (3분) → Step 1 문제 찾기 게임 (7분, 정본 판정은 생략)</td><td>6종 중 몇 개 찾았는지 팀별로 손 들기</td></tr>
+      <tr><td>11:10 ~ 11:20</td><td>팀 구성·5가지 역할 정하기 (3분) → Step 1 문제 찾기 게임 (7분, 정본 판정은 생략)</td><td>6종 중 몇 개 찾았는지 팀별로 손 들기</td></tr>
       <tr><td>11:20 ~ 11:25</td><td>Step 3 위임 단계 투표 (8개 업무)</td><td>의견이 갈린 업무 1개만 골라 30초 토론</td></tr>
       <tr><td>11:25 ~ 11:40</td><td>팀 프로젝트 구성 (CSV 3종 + 카드 3장 + AGENTS) → 17문항 영역별 분담 채점</td><td>함정 문항 12·13·17번 채점을 엄격하게</td></tr>
       <tr><td>11:40 ~ 11:50</td><td>틀린 원인 1개씩 공유 (카드 / 규칙 / 시트 / 질문) → 점수·소감 → 이후 과정 안내</td><td>"AI 탓보다 데이터 탓" 정리 멘트</td></tr>
@@ -465,7 +510,8 @@
       <li><b>시트를 고치려 하면 멈춰 주세요.</b> 실제 업무에서는 정본 담당자가 고칩니다. 오늘은 "알릴 목록"으로만 남깁니다.</li>
       <li><b>실제 데이터 금지.</b> 실습 중 실제 사내 데이터나 개인정보를 올리지 않도록 처음과 Step 2 시작 때 한 번 더 안내하세요.</li>
       <li>메뉴 이름은 Claude·ChatGPT 화면 업데이트나 조직 설정에 따라 다를 수 있습니다. 사전에 진행자 계정으로 두 도구 모두 한 번 따라가 보세요. 팀 안에서 도구가 섞여도 괜찮습니다. 정답은 같습니다.</li>
-      <li><b>Codex 시연 (추천):</b> 진행자 화면에서 CSV 3종 + 확정 카드 + <code>AGENTS.md</code>를 한 폴더에 두고 Codex로 열면 규칙 파일을 따로 붙여 넣지 않아도 바로 적용됩니다. AGENTS.md 한 줄(예: 집행률은 두 기준 모두)을 지웠다 되살리며 같은 질문을 던지면 규칙의 효과가 바로 보입니다.</li>
+      <li data-tool="claude"><b>Claude Code 시연 (추천):</b> 진행자 화면에서 CSV 3종 + 확정 카드 + <code>AGENTS_총무팀.md</code>를 한 폴더에 두고, 같은 폴더의 <code>CLAUDE.md</code>에 <code>@AGENTS_총무팀.md</code> 한 줄을 적은 뒤 Claude Code로 엽니다. 규칙 한 줄(예: 집행률은 두 기준 모두)을 지웠다 되살리며 같은 질문을 던지면 규칙의 효과가 바로 보입니다.</li>
+      <li data-tool="chatgpt"><b>Codex 시연 (추천):</b> 진행자 화면에서 CSV 3종 + 확정 카드 + <code>AGENTS.md</code>를 한 폴더에 두고 Codex로 열면 규칙 파일을 따로 붙여 넣지 않아도 바로 적용됩니다. AGENTS.md 한 줄(예: 집행률은 두 기준 모두)을 지웠다 되살리며 같은 질문을 던지면 규칙의 효과가 바로 보입니다.</li>
     </ul>
   </section>
 
