@@ -23,7 +23,7 @@
     <div class="wrap" data-lab="t1"><a href="#t1-0">0. 팀 구성·준비</a><a href="#t1-1">1. 워밍업</a><a href="#t1-2">2. 정본 판정</a><a href="#t1-3">3. 문제 찾기</a><a href="#t1-4">4. 정리</a></div>
     <div class="wrap" data-lab="t2"><a href="#t2-1">1. 지식 카드란</a><a href="#t2-2">2. 카드 초안</a><a href="#t2-3">3. 짝 검토</a><a href="#t2-4">4. 정리</a></div>
     <div class="wrap" data-lab="t3"><a href="#t3-1">1. 규칙 합의</a><a href="#t3-2">2. 팀 에이전트</a><a href="#t3-3">3. 1라운드 채점</a><a href="#t3-4">4. 고치고 2라운드</a></div>
-    <div class="wrap" data-lab="t4"><a href="#t4-1">1. 업데이트 루틴</a><a href="#t4-2">2. 회고·발표</a></div>
+    <div class="wrap" data-lab="t4"><a href="#t4-1">1. 업데이트 루틴</a><a href="#t4-2">2. 회고·발표</a><a href="#t4-final">🎓 Final</a></div>
     <div class="wrap" data-lab="guide"><a href="#g-1">1. 시간표·자료</a><a href="#g-2">2. 정답</a><a href="#g-3">3. 진행 팁</a><a href="#g-4">4. 보여 줄 예시</a></div>
   </nav>
 </header>
@@ -83,12 +83,12 @@
     <table>
       <tr><th>파일</th><th>쓰는 곳</th><th>내려받기</th></tr>
       <tr><td>실습 CSV 3종</td><td>모든 활동</td><td><a class="dl" href="files/data/실습1_신규입사자_장비신청.csv" download>⬇ 장비</a> <a class="dl" href="files/data/실습2_좌석배치_현황.csv" download>⬇ 좌석</a> <a class="dl" href="files/data/실습3_총무_예산정산.csv" download>⬇ 예산</a></td></tr>
-      <tr><td>정본지도_템플릿.md</td><td>Step 1</td><td><a class="dl" href="files/team/정본지도_템플릿.md" download>⬇ 템플릿</a></td></tr>
+      <tr><td>정본지도_템플릿.md</td><td>Step 1</td><td><a class="dl" href="files/team/canonical-map-template.md" download="정본지도_템플릿.md">⬇ 템플릿</a></td></tr>
       <tr><td>카드_템플릿.md</td><td>Step 2</td><td><a class="dl" href="files/team/카드_템플릿.md" download>⬇ 템플릿</a></td></tr>
       <tr><td>AGENTS_총무팀.md</td><td>Step 3</td><td><a class="dl" href="files/AGENTS_총무팀.md" download>⬇ 규칙</a></td></tr>
       <tr><td>평가질문_문제지.md</td><td>Step 3</td><td><a class="dl" href="files/team/평가질문_문제지.md" download>⬇ 문제지</a></td></tr>
     </table>
-    <p style="font-size:14px;color:var(--faint)">템플릿은 Google Docs나 메모장에 붙여 넣어 같이 편집하면 편합니다. 팀당 문서 하나를 같이 쓰세요.</p>
+    <p style="font-size:14px;color:var(--faint)">템플릿은 <b>팀 공용 Google Docs</b>에 붙여 넣어 같이 편집합니다. 팀당 문서 하나를 같이 쓰세요.</p>
   </section>
 
   <section class="card" id="t1-1">
@@ -126,10 +126,11 @@
       <tr><td><span class="badge amber">작업본</span></td><td>원래 시스템에서 가져와 정리 중인 것. 원래 시스템이 맞다</td><td>정산 시트 (전자결재가 원래)</td></tr>
       <tr><td><span class="badge blue">검산 대상</span></td><td>다른 값으로 계산한 결과. 근거로 쓰지 않고 맞는지 확인만 한다</td><td>정산 시트 오른쪽 요약표</td></tr>
     </table>
+    <div class="callout"><div class="t">"진짜 정본" 칸은 실제로 찾아가 확인해야 하나요?</div><p>아니요. 실습에서는 <b>평소 업무 경험으로 짐작해서</b> 적으면 됩니다. "이 값은 원래 어디서 처음 만들어지지?"를 떠올려 인사시스템, 전자결재, 총무자산시스템, 이 시트 자체 중에서 고르세요. 모르면 <b>"확인 필요"</b>라고 적는 것도 정답입니다. 실제 업무에 에이전트를 적용할 때 그 칸을 담당자에게 확인하면 됩니다.</p></div>
     <h4>판정할 때 던질 질문 3개</h4>
     <ul class="clean"><li>이 값을 <b>처음 입력하는 곳</b>은 어디인가?</li><li>이 값이 틀리면 <b>누가, 어디를</b> 고치나?</li><li>이 시트와 원래 시스템이 다르면 <b>어느 쪽이 맞나?</b></li></ul>
     <h4>공통 키도 확인하세요 (템플릿 "2. 공통 키" 표)</h4>
-    <p>세 시트를 <b>같은 사람, 같은 부서</b> 단위로 이을 수 있는 열이 있나요? 사람은 무엇으로, 부서는 무엇으로 구분하고 있나요?</p>
+    <p><b>공통 키</b>는 여러 시트에 똑같이 들어 있어서 서로 다른 시트의 줄을 "같은 대상"으로 이어 주는 번호예요 (예: 사번, 신청번호, 좌석코드). 세 시트를 <b>같은 사람, 같은 부서, 같은 비용 건</b> 단위로 이을 수 있는 번호가 있나요? 이름은 겹치거나 바뀔 수 있어서 키로 쓰기 어렵습니다.</p>
   </section>
 
   <section class="card" id="t1-3">
@@ -241,6 +242,25 @@
   <section class="card" id="t2-3">
     <div class="sec-h"><div class="num">3</div><h2>활동 B · 짝 검토 (승격 / 보류 / 폐기)</h2><span class="time">10분</span></div>
     <p><b>검토 담당자</b>가 암묵지 담당자의 카드를 검토합니다. 출처가 시트와 맞는지는 <b>정본 담당자</b>가 함께 확인합니다. 아래 5가지를 모두 통과하면 <b>승격</b>, 고칠 게 있으면 <b>보류</b>, 근거가 없으면 <b>폐기</b>입니다.</p>
+    <h4>검토 순서 (카드 1장에 3~5분)</h4>
+    <ol class="steps-list">
+      <li><b>정본 담당자</b>가 카드의 <code>출처</code>에 적힌 <b>시트 파일</b>(CSV 3종 중 하나)을 엽니다.</li>
+      <li>출처에 적힌 <b>행</b>을 찾습니다. 장비는 신청번호, 좌석은 좌석코드, 예산은 정산월 + 비용항목으로 찾아요. (엑셀·구글시트에서 <code>⌘F</code>)</li>
+      <li>카드에 인용된 <b>원래 문구가 그 행에 그대로 있는지</b> 확인합니다. 글자가 다르거나 행이 없으면 "출처 불일치"예요.</li>
+      <li><b>검토 담당자</b>는 그 사이 아래 체크리스트 5가지를 봅니다. 특히 "몇 건을 보고 만든 규칙인지" 세어 보고 신뢰도가 맞는지 확인해요.</li>
+      <li>판정을 정합니다. 다 통과하면 <b>승격</b>(확인자에 검토 담당자 이름, 상태 "확정"), 고칠 게 있으면 <b>보류</b>(무엇을 고칠지 한 줄), 출처가 시트에 없으면 <b>폐기</b>.</li>
+      <li>Step 2 정리 표(카드 목록)의 상태 칸을 바꿉니다.</li>
+    </ol>
+    <details><summary>예시: "인사 연동이 끝나야 장비 지급" 카드 검토</summary>
+      <table>
+        <tr><th>확인</th><th>한 일</th><th>결과</th></tr>
+        <tr><td>출처 파일</td><td><code>실습1_신규입사자_장비신청.csv</code>를 엶</td><td>✓</td></tr>
+        <tr><td>행 찾기</td><td>REQ-2026-003, 007, 011, 013 네 줄을 찾음</td><td>✓ 4줄 모두 있음</td></tr>
+        <tr><td>문구 대조</td><td>각 줄의 비고 열이 카드 인용("인사시스템 사번 미발급으로 수동 확인 필요" 등)과 같은지 봄</td><td>✓ 글자 그대로 일치</td></tr>
+        <tr><td>신뢰도</td><td>4건의 패턴을 보고 만든 규칙 → "중간"이 맞는지</td><td>✓ 적절 (규칙이 시트에 직접 적힌 건 아님)</td></tr>
+        <tr><td>판정</td><td>5가지 모두 통과</td><td><b>승격</b> → 확인자: 검토 담당자 이름, 상태: 확정</td></tr>
+      </table>
+    </details>
     <div class="check" data-id="t2-review">
       <div class="check-h"><span>카드 검토 기준 (카드 1장 기준)</span><span class="cnt"></span></div><div class="bar"><i></i></div>
       <label><input type="checkbox">출처에 시트·행·원래 문구가 있다 (시트에서 직접 찾아 확인했다)</label>
@@ -254,7 +274,7 @@
 
   <section class="card" id="t2-4">
     <div class="sec-h"><div class="num">✓</div><h2>Step 2 정리</h2></div>
-    <p>이 페이지의 표는 <b>양식</b>입니다. 사이트에는 적을 수 없으니, 아래 양식을 복사해 <b>팀 공용 문서</b>(Google Docs, 카카오워크 메모 등)에 붙여 넣고 카드가 생길 때마다 한 줄씩 채웁니다.</p>
+    <p>이 페이지의 표는 <b>양식</b>입니다. 사이트에는 적을 수 없으니, 아래 양식을 복사해 <b>팀 공용 Google Docs</b>에 붙여 넣고 카드가 생길 때마다 한 줄씩 채웁니다.</p>
     <h4>채우는 방법</h4>
     <table>
       <tr><th>칸</th><th>무엇을 적나</th><th>어디서 가져오나</th></tr>
@@ -264,7 +284,7 @@
       <tr><td>상태</td><td>검토 대기 → 확정 / 충돌 미해결 / 보류 / 폐기</td><td>짝 검토 결과</td></tr>
       <tr><td>작성 / 확인</td><td>초안을 만든 사람 / 검토해서 확정한 사람</td><td>카드 머리말 <code>작성자:</code> / <code>확인자:</code></td></tr>
     </table>
-    <div class="copybox"><div class="label">팀 문서에 붙여 넣을 양식 (예시 3줄 포함)<button type="button">복사</button></div><pre>| 카드 이름 | 종류 | 신뢰도 | 상태 | 작성 / 확인 |
+    <div class="copybox"><div class="label">팀 Google Docs에 붙여 넣을 양식 (예시 3줄 포함)<button type="button">복사</button></div><pre>| 카드 이름 | 종류 | 신뢰도 | 상태 | 작성 / 확인 |
 |---|---|---|---|---|
 | 인사 연동이 끝나야 장비 지급 (REQ-003·007·011·013) | 의존성 | 중간 | 확정 | 암묵지 담당 / 검토 담당 |
 | 8층 A구역 보안구역은 출입 권한 연동 필수 (PA-8F-A04) | 숨은 제약 | 낮음 | 보류 | 암묵지 담당 / 검토 담당 |
@@ -295,7 +315,7 @@
       <tr><td><span class="badge red">L4 사람 결정</span></td><td>돈·인사·외부 발송처럼 되돌리기 어려움. 근거만 정리한다</td></tr>
     </table>
     <h4>각자 투표 → 다르면 토론 (가이드문서 담당자가 기록)</h4>
-    <p>아래 8개는 오늘 실습에서 실제로 다룬 업무입니다. 업무마다 <b>L1~L4 중 하나</b>를 골라 "내 투표" 칸에 적고, 팀원끼리 다르면 토론해서 "팀 결정"을 정합니다. 표는 팀 공용 문서에 옮겨 적어도 됩니다.</p>
+    <p>아래 8개는 오늘 실습에서 실제로 다룬 업무입니다. 업무마다 <b>L1~L4 중 하나</b>를 골라 "내 투표" 칸에 적고, 팀원끼리 다르면 토론해서 "팀 결정"을 정합니다. 표는 팀 공용 Google Docs에 옮겨 적어도 됩니다.</p>
     <table>
       <tr><th>업무 (오늘 실습에서 한 일)</th><th>내 투표 (하나 고르기)</th><th>팀 결정</th></tr>
       <tr><td>장비 신청 목록 점검, 위험 등급 분류</td><td class="vote">L1 · L2 · L3 · L4</td><td class="vote">( &nbsp; &nbsp; )</td></tr>
@@ -384,7 +404,7 @@
       <tr><td>인사 연동·사번처럼 다른 시스템을 옮겨 적은 값</td><td>그 시스템의 담당 부서 (예: 인사팀)</td></tr>
     </table>
     <p>팀이 시트를 직접 고치지 않는 이유는, 진짜 값은 담당자만 확정할 수 있기 때문입니다. 팀은 <b>무엇이 이상한지 근거와 함께 넘기고</b>, 담당자가 고친 뒤 카드나 규칙을 갱신합니다.</p>
-    <div class="copybox"><div class="label">팀 문서에 붙여 넣을 양식<button type="button">복사</button></div><pre>| 시트 | 행 (신청번호·좌석코드·정산월+항목) | 무엇이 이상한가 | 근거 | 알릴 사람 | 상태 |
+    <div class="copybox"><div class="label">팀 Google Docs에 붙여 넣을 양식<button type="button">복사</button></div><pre>| 시트 | 행 (신청번호·좌석코드·정산월+항목) | 무엇이 이상한가 | 근거 | 알릴 사람 | 상태 |
 |---|---|---|---|---|---|
 | 좌석 배치 | (REQ-2026-001 관련) | 비고에 "5층 좌석 사전 배치 완료"인데 좌석 시트에 해당 좌석이 없음 | 장비 REQ-2026-001 비고 | 총무 공간 담당 | 전달 전 |
 | 장비 신청 / 예산 정산 | REQ-2026-009 / 2026-10 IT장비 | 모니터 재고 기록이 서로 다름 (예비 10세트 vs 재고 부족) | 두 시트 비고 | 총무 장비 담당 | 전달 전 |
@@ -423,7 +443,7 @@
     <h4>고칠 때 규칙 3가지</h4>
     <ul class="clean">
       <li><b>지우지 말고 "폐기"로 표시.</b> 대신 새 카드 이름을 적어 둡니다.</li>
-      <li><b>변경 이력 남기기.</b> Google Docs/Drive 버전 기록을 씁니다.</li>
+      <li><b>변경 이력 남기기.</b> Google Docs에 버전 기록을 씁니다.</li>
       <li><b>산출물마다 주인 1명.</b> 담당 칸에는 역할 이름 대신 실제 사람 이름을 적어 마무리합니다. "팀 전체 관리"는 아무도 관리하지 않게 됩니다.</li>
     </ul>
   </section>
@@ -451,6 +471,24 @@
       <label><input type="checkbox">업데이트 루틴 표 (Step 4)</label>
     </div>
     <div class="callout teal"><div class="t">오늘의 한 줄</div><p>에이전트를 믿고 쓰려면 똑똑한 모델보다 <b>진짜 데이터(정본), 시트에 없는 맥락(카드), 맡길 선(규칙), 맞는지 확인하는 질문(평가), 고치는 약속(루틴)</b>이 필요합니다.</p></div>
+  </section>
+  <section class="card" id="t4-final" style="text-align:center;background:linear-gradient(135deg,#ecfdf5,#eff6ff)">
+    <div style="font-size:44px;line-height:1">🎓</div>
+    <h2 style="margin:8px 0 6px">끝까지 오셨습니다!</h2>
+    <p style="color:var(--muted);margin:0 0 18px">이름과 팀 이름, 맡은 역할을 적고 <b>Final</b>을 누르면 <b>AI Fluency 배지</b>를 드립니다.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:14px">
+      <input id="cert-name" placeholder="이름 (예: 홍길동)" maxlength="20" style="padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;width:170px">
+      <input id="cert-team" placeholder="팀 이름" maxlength="20" style="padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;width:150px">
+      <select id="cert-role" style="padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff">
+        <option>정본 담당자</option><option>암묵지 담당자</option><option>가이드문서 담당자</option><option>검토 담당자</option><option>평가 담당자</option>
+      </select>
+    </div>
+    <button id="cert-btn" type="button" style="padding:14px 34px;border:0;border-radius:999px;background:var(--teal);color:#fff;font:inherit;font-weight:800;font-size:18px;cursor:pointer;box-shadow:0 6px 18px rgba(15,118,110,.3)">Final 🎉 배지 받기</button>
+    <div id="cert-out" style="display:none;margin-top:22px">
+      <img id="cert-img" alt="AI Fluency 배지" style="width:420px;max-width:100%;padding:24px;background:#2b2b2b;border-radius:18px">
+      <div style="margin-top:14px"><a id="cert-dl" class="dl" download="AI_Fluency_배지.png" href="#">⬇ 배지 저장 (PNG)</a></div>
+      <p style="font-size:14px;color:var(--faint);margin-top:8px">저장한 이미지를 카카오워크나 아지트에 공유해 주세요.</p>
+    </div>
   </section>
 </article>
 
@@ -484,6 +522,7 @@
     </details>
     <table>
       <tr><th>자료</th><th>내려받기</th></tr>
+      <tr><td>정본지도 정답 예시 (데이터별 정본, 공통 키, 찾은 문제 6개)</td><td><a class="dl" href="view.html?f=files/facilitator/canonical-map-answer.md&amp;back=team.html%23g-1">내용 보기</a> <a class="dl" href="files/facilitator/canonical-map-answer.md" download="정본지도_정답예시.md">⬇ 정답 예시</a></td></tr>
       <tr><td>평가 질문 정답지 (17문항, 근거 포함)</td><td><a class="dl" href="files/facilitator/answer-key.md" download="평가질문_정답지.md">⬇ 정답지</a></td></tr>
       <tr><td>완성 예시 폴더 (정본지도, 카드 10장, AGENTS, 업데이트 루틴, 평가)</td><td><a class="dl" href="files/facilitator/second-brain-example.zip" download="총무-second-brain_예시.zip">⬇ ZIP</a></td></tr>
     </table>
@@ -554,6 +593,42 @@
 
 </main>
 <footer><div class="wrap">총무 AI LAB · Part 2 팀 실습 · 실습 데이터는 모두 가상입니다. 체크 표시는 이 브라우저에만 저장됩니다.</div></footer>
+<script>
+(function(){
+  const btn=document.getElementById('cert-btn'); if(!btn) return;
+  const $=id=>document.getElementById(id);
+  ['cert-name','cert-team','cert-role'].forEach(id=>{const v=localStorage.getItem(id); if(v) $(id).value=v;});
+  function poly(c,cx,cy,r,n,rot){c.beginPath();for(let i=0;i<n;i++){const a=rot+i*2*Math.PI/n;const px=cx+r*Math.cos(a),py=cy+r*Math.sin(a);i?c.lineTo(px,py):c.moveTo(px,py);}c.closePath();}
+  function fit(c,txt,font,size,max){let s=size;do{c.font=font.replace('{s}',s);s-=2;}while(c.measureText(txt).width>max&&s>14);}
+  btn.addEventListener('click', async ()=>{
+    const name=$('cert-name').value.trim(), team=$('cert-team').value.trim(), role=$('cert-role').value;
+    if(!name){ $('cert-name').focus(); $('cert-name').style.borderColor='#b91c1c'; return; }
+    ['cert-name','cert-team','cert-role'].forEach(id=>localStorage.setItem(id,$(id).value));
+    const F='"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",sans-serif';
+    try{ await document.fonts.load('700 40px "Pretendard Variable"'); }catch(e){}
+    const S=1200,c=document.createElement('canvas'); c.width=S;c.height=S; const x=c.getContext('2d');
+    const cx=S/2,cy=S/2,n=12,rot=Math.PI/12;
+    x.fillStyle='#F4C0A0'; poly(x,cx,cy,560,n,rot); x.fill();
+    x.strokeStyle='#1f1a17'; x.lineWidth=2.5; poly(x,cx,cy,520,n,rot); x.stroke();
+    const ink='#1f1a17'; x.fillStyle=ink; x.strokeStyle=ink; x.textAlign='center'; x.textBaseline='alphabetic';
+    // icon
+    const iy=255; x.lineWidth=7; x.beginPath(); x.arc(cx,iy,62,0,Math.PI*2); x.stroke();
+    [[0,-30],[30,0],[0,30],[-30,0]].forEach(([dx,dy])=>{x.beginPath();x.arc(cx+dx,iy+dy,11,0,Math.PI*2);x.fill();});
+    x.font='700 86px '+F; x.fillText('AI Fluency',cx,435);
+    x.font='700 62px '+F; x.fillText('AI 역량 · 총무 실무편',cx,530);
+    x.font='500 40px '+F; x.fillText('위임 · 설명 · 분별력 · 책임감',cx,600);
+    x.lineWidth=2.5; x.beginPath(); x.moveTo(cx-250,640); x.lineTo(cx+250,640); x.stroke();
+    fit(x,name,'800 {s}px '+F,64,640); x.fillText(name,cx,725);
+    const sub=(team?team+' · ':'')+role; fit(x,sub,'500 {s}px '+F,36,680); x.fillText(sub,cx,780);
+    const d=new Date();
+    x.font='500 38px '+F; x.fillText('카카오 총무팀 · '+d.getFullYear()+'. '+(d.getMonth()+1),cx,860);
+    x.font='500 32px '+F; x.fillText('AXS TF · 카카오엔터프라이즈',cx,912);
+    const url=c.toDataURL('image/png'); $('cert-img').src=url; $('cert-dl').href=url;
+    $('cert-dl').download='AI_Fluency_총무실무편_'+name+'.png';
+    $('cert-out').style.display='block'; $('cert-out').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+})();
+</script>
 <script src="assets/app.js"></script>
 </body>
 </html>
