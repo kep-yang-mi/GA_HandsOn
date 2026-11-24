@@ -202,16 +202,17 @@
     <div class="check" data-id="p2-prep">
       <div class="check-h"><span>준비 체크리스트</span><span class="cnt"></span></div><div class="bar"><i></i></div>
       <label data-tool="claude"><input type="checkbox">왼쪽 메뉴에 <b>Projects</b>가 보이는지 확인</label>
-      <label data-tool="chatgpt"><input type="checkbox">왼쪽 메뉴에 <b>New project</b>(새 프로젝트)가 보이는지 확인</label>
-      <label><input type="checkbox">CSV 3개 내려받기 (Step 1에서 받은 장비 CSV 포함)</label>
+      <label data-tool="chatgpt"><input type="checkbox">왼쪽 메뉴에 <b>프로젝트</b>가 보이는지 확인 (앱은 왼쪽 아이콘 줄 <b>···</b> 안에 있음)</label>
+      <label><input type="checkbox">CSV 3개 준비 (장비 CSV는 Step 1에서 받았으면 <b>다시 받지 않기</b>)</label>
       <label><input type="checkbox">규칙 문서 1개 + 지식 카드 3장 내려받기</label>
     </div>
     <table>
       <tr><th>구분</th><th>파일</th><th>설명</th><th>내려받기</th></tr>
-      <tr><td><span class="badge">데이터</span></td><td>실습1 · 2 · 3 CSV</td><td>장비 15건, 좌석 15석, 예산 15건</td><td><a class="dl" href="files/data/실습1_신규입사자_장비신청.csv" download>⬇ 장비</a> <a class="dl" href="files/data/실습2_좌석배치_현황.csv" download>⬇ 좌석</a> <a class="dl" href="files/data/실습3_총무_예산정산.csv" download>⬇ 예산</a></td></tr>
+      <tr><td><span class="badge">데이터</span></td><td>실습1 · 2 · 3 CSV</td><td>장비 15건, 좌석 15석, 예산 15건</td><td><a class="dl" href="files/data/실습1_신규입사자_장비신청.csv" download>⬇ 장비</a><span style="display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:12px;font-weight:600">Step 1에서 받았으면 생략</span> <a class="dl" href="files/data/실습2_좌석배치_현황.csv" download>⬇ 좌석</a> <a class="dl" href="files/data/실습3_총무_예산정산.csv" download>⬇ 예산</a></td></tr>
       <tr><td><span class="badge blue">규칙</span></td><td>AGENTS_총무팀.md</td><td>어떤 데이터가 진짜인지, 무엇을 하면 안 되는지, 답변 형식</td><td><a class="dl" href="files/AGENTS_총무팀.md" download>⬇ 규칙</a> <a class="dl" href="view.html?f=files/AGENTS_%EC%B4%9D%EB%AC%B4%ED%8C%80.md&amp;back=personal.html%23s2-0">내용 보기</a></td></tr>
       <tr><td><span class="badge teal">지식 카드</span></td><td>카드 3장</td><td>시트에 안 적힌 맥락: 개편 전후 부서명, 모니터 재고 충돌, 웰컴키트 의존성</td><td><a class="dl" href="files/cards/조직개편_부서명_매핑.md" download>⬇ 부서명</a> <a class="dl" href="files/cards/모니터재고_장비지급.md" download>⬇ 재고</a> <a class="dl" href="files/cards/웰컴키트_품의_입사자지급.md" download>⬇ 웰컴키트</a></td></tr>
     </table>
+    <p style="font-size:14px;color:var(--faint);margin-top:6px">같은 파일을 다시 받으면 <code>실습1_신규입사자_장비신청 (1).csv</code>처럼 사본이 생깁니다. 내용은 같으니 <b>처음 받은 파일</b>을 쓰고 사본은 지워 주세요.</p>
   </section>
 
   <section class="card" id="s2-1">
@@ -238,12 +239,12 @@
       <p style="margin:8px 0 0;font-size:14px"><b>"프로젝트 폴더 선택" 창이 뜨면</b> (데스크톱 앱): 파일이 아니라 <b>폴더</b>를 고르는 방식입니다. 파일이 흐리게 보여 선택이 안 되는 게 정상이에요. 아래 Step 3의 <b>"폴더 방식"</b>대로 <code>총무실습</code> 폴더를 먼저 만들고 그 폴더를 고르세요.</p>
     </div>
     <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span>
-      <ol><li>왼쪽 메뉴 <b>New project</b>(새 프로젝트)를 누릅니다.</li><li>이름: <code>총무 데이터 컨시어지</code>, 아이콘·색은 자유롭게</li><li>만들기를 누르면 사이드바 맨 위에 프로젝트가 생깁니다.</li></ol>
+      <ol><li><b>프로젝트</b>를 클릭합니다.</li><li>이름: <code>총무 데이터 컨시어지</code>, 아이콘·색은 자유롭게</li><li>만들기를 누르면 사이드바 맨 위에 프로젝트가 생깁니다.</li></ol>
     </div>
 
     <h3><span class="step">Step 2</span>지침 붙여 넣기</h3>
     <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span><p style="margin:4px 0">프로젝트 화면 오른쪽 <b>Instructions</b>(지침) → 편집 → 아래 내용을 붙여 넣고 저장합니다.</p></div>
-    <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span><p style="margin:4px 0">프로젝트 이름 옆 <b>•••</b> → <b>Project settings</b>(프로젝트 설정) → 지침 칸에 아래 내용을 붙여 넣고 저장합니다.</p></div>
+    <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span><p style="margin:4px 0">프로젝트 이름 옆 <b>•••</b> → <b>Project settings</b>(프로젝트 설정) → 지침 칸에 아래 내용을 붙여 넣고 저장합니다.</p><p style="margin:6px 0 0;font-size:14px">⚠️ 같은 화면 아래 <b>로컬 폴더 설정</b>은 <b>체크하지 않습니다.</b> 체크하면 새 대화가 "로컬 채팅"으로 시작되고, 로컬 채팅에는 프로젝트 <b>지침·파일(소스)·메모리가 적용되지 않습니다.</b></p></div>
     <div class="copybox"><div class="label">프로젝트 지침<button type="button">복사</button></div><pre>당신은 카카오 총무팀의 '총무 데이터 컨시어지'입니다. 이 프로젝트에 올린 파일만 근거로 한국어로 답합니다.
 
 [데이터의 성격]
@@ -265,7 +266,7 @@
 
     <h3><span class="step">Step 3</span>파일 7개 올리기</h3>
     <div class="toolbox" data-tool="claude"><span class="tbadge claude">Claude</span>
-      <p style="margin:4px 0"><b>웹(claude.ai):</b> 프로젝트 화면 오른쪽 <b>Files</b>(프로젝트 지식) 옆 <b>＋</b> → 파일 업로드로 <b>CSV 3개 + AGENTS_총무팀.md + 카드 3장</b>을 올립니다.</p>
+      <p style="margin:4px 0"><b>웹(claude.ai):</b> 프로젝트 화면 오른쪽 <b>Files</b>(프로젝트 지식) 옆 <b>＋</b> → 파일 업로드로 <b>CSV 3개 + AGENTS_총무팀.md + <b>지식 카드 3장</b>(위에서 받은 부서명 · 재고 · 웰컴키트 .md 파일)</b>을 올립니다.</p>
       <p style="margin:8px 0 4px"><b>데스크톱 앱 (폴더 방식):</b> "프로젝트 폴더 선택" 창이 뜨면</p>
       <ol>
         <li>Finder에서 새 폴더 <code>총무실습</code>을 만들고, 내려받은 <b>7개 파일</b>을 그 안에 넣습니다. 파일 이름 끝에 <code>(1)</code>이 붙은 중복 파일은 넣지 않아요.</li>
@@ -275,7 +276,7 @@
       </ol>
       <p style="margin:6px 0 0;font-size:14px;color:var(--faint)">💡 이 창이 바로 Part 2에서 다룰 "권한은 주는 게 아니라 빌려주는 것"의 실제 예입니다. 실제 업무 폴더라면 무엇을 허용할지 한 번 더 생각해 보세요.</p>
     </div>
-    <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span><p style="margin:4px 0">프로젝트 화면의 <b>파일 추가</b>(Add files)로 <b>CSV 3개 + AGENTS_총무팀.md + 카드 3장</b>을 올립니다. 올린 파일은 프로젝트 소스 목록에서 확인할 수 있습니다.</p></div>
+    <div class="toolbox" data-tool="chatgpt"><span class="tbadge chatgpt">ChatGPT</span><p style="margin:4px 0">프로젝트 화면의 <b>파일 추가</b>(Add files)로 <b>CSV 3개 + AGENTS_총무팀.md + <b>지식 카드 3장</b>(위에서 받은 부서명 · 재고 · 웰컴키트 .md 파일)</b>을 올립니다. 올린 파일은 프로젝트 소스 목록에서 확인할 수 있습니다.</p></div>
     <div class="ok">프로젝트 파일 목록에 <b>7개</b>가 모두 보이면 준비 끝입니다.</div>
     <div class="callout amber"><div class="t">실제 업무에서는?</div><p>실습에서는 파일을 직접 올리지만, 실제 업무에서는 원본이 바뀌면 다시 올려야 합니다. 어느 파일이 "진짜"인지, 누가 언제 갱신하는지는 Part 2에서 팀으로 정합니다.</p></div>
   </section>
